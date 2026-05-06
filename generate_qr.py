@@ -37,34 +37,42 @@ qr_img = qr.make_image(
 # Resize to standard size
 qr_img = qr_img.resize((600, 600), Image.LANCZOS)
 
-# Load and resize logo
+# Load and resize logo preserving aspect ratio
 logo = Image.open(logo_path).convert("RGBA")
 logo_size = 120
-logo = logo.resize((logo_size, logo_size), Image.LANCZOS)
+logo.thumbnail((logo_size, logo_size), Image.LANCZOS)
+
+# Get actual dimensions after thumbnail (aspect ratio preserved)
+logo_w, logo_h = logo.size
+padding = 20
+ring_pad = 28
+bg_w = logo_w + padding
+bg_h = logo_h + padding
 
 # Create white circular background for logo
-circle_bg = Image.new("RGBA", (logo_size + 20, logo_size + 20), (255, 255, 255, 0))
+circle_bg = Image.new("RGBA", (bg_w, bg_h), (255, 255, 255, 0))
 draw = ImageDraw.Draw(circle_bg)
-draw.ellipse((0, 0, logo_size + 20 - 1, logo_size + 20 - 1), fill=(255, 255, 255, 255))
+draw.ellipse((0, 0, bg_w - 1, bg_h - 1), fill=(255, 255, 255, 255))
 
 # Add gold border ring
-ring_size = logo_size + 28
-ring = Image.new("RGBA", (ring_size, ring_size), (255, 255, 255, 0))
+ring_w = logo_w + ring_pad
+ring_h = logo_h + ring_pad
+ring = Image.new("RGBA", (ring_w, ring_h), (255, 255, 255, 0))
 draw_ring = ImageDraw.Draw(ring)
-draw_ring.ellipse((0, 0, ring_size - 1, ring_size - 1), fill=(201, 162, 39, 255))
-draw_ring.ellipse((6, 6, ring_size - 7, ring_size - 7), fill=(255, 255, 255, 255))
+draw_ring.ellipse((0, 0, ring_w - 1, ring_h - 1), fill=(201, 162, 39, 255))
+draw_ring.ellipse((6, 6, ring_w - 7, ring_h - 7), fill=(255, 255, 255, 255))
 
 # Center position on QR
 qr_rgba = qr_img.convert("RGBA")
-ring_pos = ((600 - ring_size) // 2, (600 - ring_size) // 2)
+ring_pos = ((600 - ring_w) // 2, (600 - ring_h) // 2)
 qr_rgba.paste(ring, ring_pos, ring)
 
 # Paste white circle background
-circle_pos = ((600 - logo_size - 20) // 2, (600 - logo_size - 20) // 2)
+circle_pos = ((600 - bg_w) // 2, (600 - bg_h) // 2)
 qr_rgba.paste(circle_bg, circle_pos, circle_bg)
 
-# Paste logo
-logo_pos = ((600 - logo_size) // 2, (600 - logo_size) // 2)
+# Paste logo (centered)
+logo_pos = ((600 - logo_w) // 2, (600 - logo_h) // 2)
 qr_rgba.paste(logo, logo_pos, logo)
 
 # Save final QR

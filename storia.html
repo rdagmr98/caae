@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Storia del CAAE – dal 1951 ad oggi. La storia completa del Centro Addestrativo Aviazione dell'Esercito di Viterbo: fondazione, trasferimento, missioni internazionali, flotta.">
+  <title>Storia del CAAE | Centro Addestrativo Aviazione dell'Esercito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .detail-section { padding: 4.5rem 1.5rem; }
+    .detail-section:nth-child(even) { background: rgba(255,255,255,.02); }
+    .callout { background:rgba(201,162,39,.07); border-left:3px solid var(--gold); border-radius:0 var(--radius) var(--radius) 0; padding:1.2rem 1.5rem; margin:1.5rem 0; }
+    .callout p { font-size:.92rem; color:#c8d4e3; line-height:1.75; font-style:italic; }
+    /* Timeline */
+    .big-timeline { display:flex; flex-direction:column; gap:0; position:relative; margin-top:2rem; }
+    .big-timeline::before { content:''; position:absolute; left:22px; top:0; bottom:0; width:3px; background:linear-gradient(to bottom,var(--gold) 0%,rgba(201,162,39,.2) 85%,transparent 100%); }
+    .bt-item { display:flex; gap:1.8rem; padding-bottom:2.5rem; position:relative; }
+    .bt-dot { width:46px; height:46px; border-radius:50%; background:var(--bg-card); border:2px solid rgba(201,162,39,.5); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem; position:relative; z-index:1; transition:var(--tr); }
+    .bt-item:hover .bt-dot { background:rgba(201,162,39,.15); border-color:var(--gold); }
+    .bt-content { flex:1; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07); border-radius:var(--radius); padding:1.4rem; transition:var(--tr); }
+    .bt-item:hover .bt-content { border-color:rgba(201,162,39,.2); background:rgba(201,162,39,.03); }
+    .bt-year { font-family:'Rajdhani',sans-serif; font-size:.78rem; font-weight:700; color:var(--gold); letter-spacing:.12em; text-transform:uppercase; margin-bottom:.3rem; }
+    .bt-title { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:.5rem; }
+    .bt-text { font-size:.86rem; color:#8b9ab0; line-height:1.75; }
+    .missions-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-top:1.5rem; }
+    .mission-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:1.2rem; text-align:center; transition:var(--tr); }
+    .mission-card:hover { border-color:rgba(201,162,39,.3); transform:translateY(-4px); }
+    .mission-flag { font-size:2rem; margin-bottom:.5rem; }
+    .mission-name { font-family:'Rajdhani',sans-serif; font-size:.95rem; font-weight:700; color:#fff; }
+    .mission-year { font-size:.78rem; color:var(--gray); margin-top:.2rem; }
+    .museum-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin-top:1.5rem; }
+    .museum-item { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:1.2rem; transition:var(--tr); display:flex; gap:1rem; align-items:flex-start; }
+    .museum-item:hover { border-color:rgba(201,162,39,.25); }
+    .museum-icon { font-size:1.8rem; flex-shrink:0; }
+    .museum-body h4 { font-family:'Rajdhani',sans-serif; font-weight:700; color:#fff; font-size:.95rem; margin-bottom:.3rem; }
+    .museum-body p { font-size:.82rem; color:#8b9ab0; line-height:1.6; }
+  </style>
+</head>
+<body>
+
+<div id="dynamic-bg">
+  <div class="bg-layer active" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg/1280px-Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg')"></div>
+</div>
+<div class="bg-overlay"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-brand">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/CoA_mil_ITA_centro_aves.png" alt="Stemma CAAE">
+    <span>CAAE · Viterbo</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Chi Siamo</a></li>
+    <li><a href="storia.html" aria-current="page">Storia</a></li>
+    <li><a href="index.html#attivita">Attività</a></li>
+    <li><a href="index.html#flotta">Flotta</a></li>
+    <li><a href="bandiera.html">Bandiera</a></li>
+    <li><a href="index.html#contatti">Contatti</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" role="button" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu principale">
+  <button class="mobile-close" id="menuClose" aria-label="Chiudi menu">✕</button>
+  <a href="index.html#about" onclick="closeMenu()">Chi Siamo</a>
+  <a href="storia.html" onclick="closeMenu()">Storia</a>
+  <a href="index.html#attivita" onclick="closeMenu()">Attività</a>
+  <a href="index.html#flotta" onclick="closeMenu()">Flotta</a>
+  <a href="bandiera.html" onclick="closeMenu()">Bandiera</a>
+  <a href="index.html#contatti" onclick="closeMenu()">Contatti</a>
+</div>
+
+<!-- HERO -->
+<div class="sub-hero">
+  <div class="sub-hero-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg/1280px-Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg')"></div>
+  <div class="sub-hero-overlay"></div>
+  <div class="sub-hero-content">
+    <p class="breadcrumb"><a href="index.html">Home</a> › Storia</p>
+    <h1>La Storia del CAAE</h1>
+    <p>Dal 1951 ad oggi · Oltre 70 anni di eccellenza addestrativa al servizio dell'Aviazione dell'Esercito Italiano</p>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="detail-section">
+  <div class="container">
+    <div class="content-grid">
+      <div class="sticky-img" data-aos="fade-right">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Italian_Army_Boeing_%28Elicotteri_Meridionali%29_CH-47C_Chinook_%28219%29_Bidini-1.jpg/960px-Italian_Army_Boeing_%28Elicotteri_Meridionali%29_CH-47C_Chinook_%28219%29_Bidini-1.jpg" alt="CH-47 Chinook AVES" loading="lazy">
+        <p style="font-size:.72rem; color:var(--gray); margin-top:.5rem;">CH-47C Chinook dell'Aviazione dell'Esercito · © Wikimedia Commons CC BY-SA</p>
+      </div>
+      <div data-aos="fade-left">
+        <p class="label">Dal 1951 ad oggi</p>
+        <div class="divider" style="margin:.7rem 0 1.2rem;"></div>
+        <h2 class="section-heading" style="margin-bottom:1.2rem;">Oltre 70 anni di <span class="gold">eccellenza</span></h2>
+        <p class="body-text">Il <strong style="color:#fff">Centro Addestrativo Aviazione dell'Esercito</strong> nasce nel <strong style="color:var(--gold)">1951</strong> a Bracciano, pochi anni dopo la ricostituzione delle Forze Armate Italiane nel dopoguerra. Fin dalla sua fondazione il CAAE ha incarnato la missione di formare i migliori aviatori militari dell'Esercito, capaci di operare in ogni condizione e teatro.</p>
+        <p class="body-text" style="margin-top:1rem;">Il trasferimento a <strong style="color:#fff">Viterbo</strong> nel 1956, presso l'aeroporto militare "Tommaso Fabbri" (LIRV), segna l'inizio di una nuova era. La città della Tuscia diventa la capitale dell'aviazione dell'Esercito Italiano: qui si formano generazioni di piloti, specialisti, tecnici e ufficiali che hanno servito il Paese nelle più difficili situazioni, dai conflitti internazionali alle emergenze di protezione civile.</p>
+        <div class="callout">
+          <p>"Il CAAE di Viterbo non è solo una scuola. È la fucina dove si forgia l'identità del pilota dell'Esercito: il rispetto delle procedure, il coraggio nelle situazioni critiche, la cura del mezzo e dei propri compagni." — <em>Tradizione AVES</em></p>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem;">
+          <div class="card" style="text-align:center; padding:1rem;">
+            <div style="font-family:'Rajdhani',sans-serif; font-size:2.5rem; font-weight:700; color:var(--gold);">1951</div>
+            <div style="font-size:.78rem; color:var(--gray);">Anno di fondazione</div>
+          </div>
+          <div class="card" style="text-align:center; padding:1rem;">
+            <div style="font-family:'Rajdhani',sans-serif; font-size:2.5rem; font-weight:700; color:var(--gold);">70+</div>
+            <div style="font-size:.78rem; color:var(--gray);">Anni di storia</div>
+          </div>
+          <div class="card" style="text-align:center; padding:1rem;">
+            <div style="font-family:'Rajdhani',sans-serif; font-size:2.5rem; font-weight:700; color:var(--gold);">4</div>
+            <div style="font-size:.78rem; color:var(--gray);">Decorazioni al labaro</div>
+          </div>
+          <div class="card" style="text-align:center; padding:1rem;">
+            <div style="font-family:'Rajdhani',sans-serif; font-size:2.5rem; font-weight:700; color:var(--gold);">15+</div>
+            <div style="font-size:.78rem; color:var(--gray);">Missioni internazionali</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE COMPLETA -->
+<div class="detail-section">
+  <div class="container">
+    <div data-aos="fade-up" style="text-align:center; margin-bottom:2.5rem;">
+      <p class="label">Cronologia</p>
+      <div class="divider"></div>
+      <h2 class="section-heading">Timeline storica 1951–2025</h2>
+    </div>
+    <div style="max-width:750px; margin:0 auto;">
+      <div class="big-timeline">
+
+        <div class="bt-item" data-aos="fade-right">
+          <div class="bt-dot">✈️</div>
+          <div class="bt-content">
+            <div class="bt-year">10 Maggio 1951 · Fondazione</div>
+            <div class="bt-title">Nascita del CAAE a Bracciano</div>
+            <div class="bt-text">Il Ministero della Difesa istituisce il Centro Addestrativo Aviazione dell'Esercito a Bracciano, sul lago omonimo. I primi corsi si svolgono con velivoli leggeri Piper L-18 e Cessna L-19, per la formazione di osservatori e piloti di collegamento. L'elicottero è ancora agli albori dell'impiego militare italiano.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="50">
+          <div class="bt-dot">🏠</div>
+          <div class="bt-content">
+            <div class="bt-year">1953–1956 · Consolidamento</div>
+            <div class="bt-title">L'elicottero entra in servizio</div>
+            <div class="bt-text">L'Esercito Italiano riceve i primi elicotteri Bell 47G (AB-47G nella versione prodotta da Agusta), destinati alla ricognizione, al collegamento e al trasporto leggero. Il CAAE avvia i primi corsi specifici per pilota di elicottero, aprendo una nuova era nell'aviazione terrestre italiana.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="100">
+          <div class="bt-dot">🏙️</div>
+          <div class="bt-content">
+            <div class="bt-year">1956 · Trasferimento</div>
+            <div class="bt-title">Il CAAE si trasferisce a Viterbo</div>
+            <div class="bt-text">Il Centro si trasferisce nell'aeroporto "Tommaso Fabbri" di Viterbo (LIRV). La struttura, con la sua ampia pista e i capannoni, permette una crescita esponenziale delle attività. Viterbo diventa sinonimo di aviazione militare dell'Esercito.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="150">
+          <div class="bt-dot">🏁</div>
+          <div class="bt-content">
+            <div class="bt-year">14 Maggio 1958 · Bandiera</div>
+            <div class="bt-title">Consegna della Bandiera di Istituto</div>
+            <div class="bt-text">Il CAAE riceve la propria Bandiera di Istituto, il massimo simbolo dell'identità e dell'onore del reparto. La cerimonia si svolge con tutti gli onori militari. La Bandiera custodisce la memoria storica del Centro e ne rappresenta l'anima immortale.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="200">
+          <div class="bt-dot">🚁</div>
+          <div class="bt-content">
+            <div class="bt-year">1960–1975 · Modernizzazione</div>
+            <div class="bt-title">Ingresso AB 205 e AB 206</div>
+            <div class="bt-text">Il CAAE riceve l'AB 205 (versione italiana dell'UH-1D Huey) e l'AB 206 JetRanger, che rivoluzionano le capacità operative. Nasce il concetto di evacuazione medica aerea (MEDEVAC) e di trasporto di truppe su elicottero. Centinaia di piloti vengono formati su queste piattaforme.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="250">
+          <div class="bt-dot">🔵</div>
+          <div class="bt-content">
+            <div class="bt-year">20 Maggio 1971 · Identità</div>
+            <div class="bt-title">Concessione del Basco Azzurro</div>
+            <div class="bt-text">Il Basco Azzurro viene ufficialmente concesso al personale dell'Aviazione dell'Esercito, distinguendoli dalle altre armi. Un momento identitario fondamentale: i "cavalieri del cielo" dell'Esercito hanno ora un simbolo visibile del proprio orgoglio e della propria specializzazione.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="300">
+          <div class="bt-dot">🌍</div>
+          <div class="bt-content">
+            <div class="bt-year">1982–1990 · Missioni internazionali</div>
+            <div class="bt-title">Libano e Somalia: l'AVES nel mondo</div>
+            <div class="bt-text">L'Aviazione dell'Esercito partecipa alle prime grandi missioni di pace internazionali (MNF in Libano, UNOSOM in Somalia). Gli elicotteri AVES operano in contesti complessi e difficili, mettendo alla prova l'addestramento del CAAE. Le esperienze operative confluiscono nell'evoluzione della dottrina e dei programmi di corso.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="350">
+          <div class="bt-dot">🏅</div>
+          <div class="bt-content">
+            <div class="bt-year">1993 · Prima decorazione</div>
+            <div class="bt-title">Medaglia d'Oro al Valore dell'Esercito</div>
+            <div class="bt-text">Il Capo di Stato Maggiore dell'Esercito conferisce al CAAE la Medaglia d'Oro al Valore dell'Esercito, massima onorificenza militare dell'arma. Il riconoscimento celebra l'eccellenza addestrativa e l'impegno nelle operazioni di mantenimento della pace nei Balcani (IFOR/SFOR).</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="400">
+          <div class="bt-dot">⚕️</div>
+          <div class="bt-content">
+            <div class="bt-year">Marzo 1994 · Seconda decorazione</div>
+            <div class="bt-title">Medaglia d'Oro al Merito della Sanità Pubblica</div>
+            <div class="bt-text">Il Ministero della Salute conferisce la Medaglia d'Oro al Merito della Sanità Pubblica per la straordinaria attività MEDEVAC, che ha salvato centinaia di vite civili sul territorio nazionale. Gli elicotteri del CAAE hanno più volte coperto il ruolo di ambulanza aerea nelle emergenze italiane.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="450">
+          <div class="bt-dot">⭐</div>
+          <div class="bt-content">
+            <div class="bt-year">Febbraio 1996 · Quarta decorazione</div>
+            <div class="bt-title">Medaglia d'Argento al Merito Civile</div>
+            <div class="bt-text">Il Presidente della Repubblica conferisce la Medaglia d'Argento al Merito Civile per il contributo costante del CAAE nelle emergenze di protezione civile e nelle operazioni di pubblica utilità. La quarta decorazione completa il quadro delle onorificenze portate sulla Bandiera di Istituto.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="500">
+          <div class="bt-dot">⚔️</div>
+          <div class="bt-content">
+            <div class="bt-year">1999 · Stendardo</div>
+            <div class="bt-title">Stendardo da Combattimento e operazioni in Kosovo</div>
+            <div class="bt-text">Il CAAE riceve lo Stendardo da Combattimento, che ne certifica la proiezione operativa nelle missioni internazionali. Gli elicotteri AVES operano in Kosovo nell'ambito di KFOR, con una presenza che durerà per anni. Nello stesso periodo il Centro potenzia i programmi di addestramento NVG e MEDEVAC avanzato.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="550">
+          <div class="bt-dot">🌐</div>
+          <div class="bt-content">
+            <div class="bt-year">2001–2014 · Afghanistan</div>
+            <div class="bt-title">ISAF e gli elicotteri italiani in Afghanistan</div>
+            <div class="bt-text">L'AVES partecipa alla missione ISAF con AB-205, AB-212 e successivamente AW-129 Mangusta in ruolo da combattimento e MEDEVAC. Gli equipaggi formati al CAAE operano in uno dei teatri più difficili e pericolosi della storia militare recente, maturando un'esperienza operativa fondamentale per l'intero corpo.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="600">
+          <div class="bt-dot">🚁</div>
+          <div class="bt-content">
+            <div class="bt-year">2010–2020 · LUH 196</div>
+            <div class="bt-title">L'ingresso del Leonardo AW-169/UH-169</div>
+            <div class="bt-text">L'Esercito inizia la transizione verso i nuovi LUH 169 (UH-169A e poi 169B) come sostituzione dei velivoli della generazione precedente. Il CAAE avvia i programmi di conversione e qualificazione dei piloti. Il 196B diventa la nuova piattaforma addestrativa di riferimento.</div>
+          </div>
+        </div>
+
+        <div class="bt-item" data-aos="fade-right" data-aos-delay="650">
+          <div class="bt-dot">🔮</div>
+          <div class="bt-content">
+            <div class="bt-year">Aprile 2025 · Futuro</div>
+            <div class="bt-title">Consegna dei primi LUH 196 D</div>
+            <div class="bt-text">L'Esercito Italiano riceve i primi esemplari del LUH 196 D (Leonardo AW-169D), variante avanzata con piena capacità multiruolo (combat, MEDEVAC, training, ISR). I 25 velivoli ordinati sostituiranno entro il 2027 l'intera flotta di vecchia generazione (AB-205, AB-206, AB-212, AB-412, A-109). Il CAAE guida la transizione formando i nuovi piloti sulla piattaforma più moderna dell'AVES.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSIONI INTERNAZIONALI -->
+<div class="detail-section">
+  <div class="container">
+    <div data-aos="fade-up" style="text-align:center; margin-bottom:2rem;">
+      <p class="label">Proiezione operativa</p>
+      <div class="divider"></div>
+      <h2 class="section-heading">Missioni internazionali AVES</h2>
+      <p style="font-size:.88rem; color:#8b9ab0; max-width:600px; margin:.8rem auto 0;">Gli equipaggi formati al CAAE hanno operato in ogni angolo del mondo.</p>
+    </div>
+    <div class="missions-grid" data-aos="fade-up">
+      <div class="mission-card"><div class="mission-flag">🇱🇧</div><div class="mission-name">Libano</div><div class="mission-year">MNF · 1982–1984 / UNIFIL</div></div>
+      <div class="mission-card"><div class="mission-flag">🇸🇴</div><div class="mission-name">Somalia</div><div class="mission-year">UNOSOM · 1993–1995</div></div>
+      <div class="mission-card"><div class="mission-flag">🇦🇱</div><div class="mission-name">Albania</div><div class="mission-year">ALBA · 1997</div></div>
+      <div class="mission-card"><div class="mission-flag">🇧🇦</div><div class="mission-name">Bosnia</div><div class="mission-year">IFOR/SFOR · 1996–2004</div></div>
+      <div class="mission-card"><div class="mission-flag">🇽🇰</div><div class="mission-name">Kosovo</div><div class="mission-year">KFOR · 1999–oggi</div></div>
+      <div class="mission-card"><div class="mission-flag">🇦🇫</div><div class="mission-name">Afghanistan</div><div class="mission-year">ISAF · 2001–2014</div></div>
+      <div class="mission-card"><div class="mission-flag">🇮🇶</div><div class="mission-name">Iraq</div><div class="mission-year">Inherent Resolve · 2004+</div></div>
+      <div class="mission-card"><div class="mission-flag">🇱🇾</div><div class="mission-name">Libia</div><div class="mission-year">Supporto alla pace · 2011+</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SALA MUSEALE -->
+<div class="detail-section">
+  <div class="container">
+    <div class="content-grid">
+      <div data-aos="fade-right">
+        <p class="label">Memoria storica</p>
+        <div class="divider" style="margin:.7rem 0 1.2rem;"></div>
+        <h2 class="section-heading" style="font-size:clamp(1.5rem,4vw,2.4rem); margin-bottom:1.2rem;">La Sala Museale del CAAE</h2>
+        <p class="body-text">All'interno della base di Viterbo è allestita la <strong style="color:#fff">Sala Museale del CAAE</strong>, che custodisce la memoria storica del Centro attraverso cimeli, fotografie, documenti originali e velivoli d'epoca. La collezione racconta settant'anni di storia dell'aviazione militare terrestre italiana.</p>
+        <p class="body-text" style="margin-top:1rem;">Tra i pezzi più significativi si trovano esemplari originali dei primissimi velivoli in dotazione al CAAE: il <strong style="color:var(--gold)">Piper L-18</strong>, aereo da osservazione degli anni '50, e il <strong style="color:var(--gold)">Bell 47G (AB-47G)</strong>, il primo elicottero militare dell'Esercito Italiano. Questi cimeli rappresentano la nascita di una tradizione che ancora oggi continua con i moderni LUH 196.</p>
+      </div>
+      <div data-aos="fade-left">
+        <div class="museum-grid">
+          <div class="museum-item">
+            <div class="museum-icon">✈️</div>
+            <div class="museum-body">
+              <h4>Piper L-18 Super Cub</h4>
+              <p>Primo velivolo di collegamento e osservazione del CAAE. In servizio dal 1951. Esposto in condizioni originali.</p>
+            </div>
+          </div>
+          <div class="museum-item">
+            <div class="museum-icon">🚁</div>
+            <div class="museum-body">
+              <h4>Agusta-Bell 47G</h4>
+              <p>Primo elicottero militare dell'Esercito Italiano. Simbolo della nascita dell'aviazione leggera italiana.</p>
+            </div>
+          </div>
+          <div class="museum-item">
+            <div class="museum-icon">🏆</div>
+            <div class="museum-body">
+              <h4>Cimeli e decorazioni</h4>
+              <p>Medaglie, diplomi, fotografie e uniformi storiche che raccontano i momenti più significativi del CAAE.</p>
+            </div>
+          </div>
+          <div class="museum-item">
+            <div class="museum-icon">📷</div>
+            <div class="museum-body">
+              <h4>Archivio fotografico</h4>
+              <p>Migliaia di immagini storiche che documentano i corsi, le missioni e la vita quotidiana del Centro dal 1951.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="detail-section" style="background:rgba(201,162,39,.05); border-top:1px solid rgba(201,162,39,.15);">
+  <div class="container" style="text-align:center;" data-aos="fade-up">
+    <p class="label">Approfondisci</p>
+    <div class="divider"></div>
+    <h2 class="section-heading" style="margin-bottom:1.5rem;">Esplora il CAAE</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+      <a href="bandiera.html" class="btn btn-gold">Bandiera e onorificenze →</a>
+      <a href="index.html#attivita" class="btn btn-outline">Le attività →</a>
+      <a href="index.html#flotta" class="btn btn-outline">La flotta →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Distintivo_del_Comando_Aviazione_dell%27Esercito.png" alt="Logo AVES">
+    <span>Centro Addestrativo Aviazione dell'Esercito</span>
+  </div>
+  <nav class="footer-links" aria-label="Link footer">
+    <a href="index.html">Home</a>
+    <a href="index.html#attivita">Corsi</a>
+    <a href="index.html#flotta">Flotta</a>
+    <a href="bandiera.html">Bandiera</a>
+    <a href="storia.html">Storia</a>
+  </nav>
+  <p class="footer-copy">
+    Sito non ufficiale a scopo informativo · Realizzato dal <strong style="color:var(--gold)">Cap. ing. (AVES) RN Gianmarco ARDIA</strong>
+  </p>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna su">↑</button>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ once:true, duration:750, easing:'ease-out-cubic', offset:50 });
+  const nav = document.getElementById('navbar');
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    btt.classList.toggle('show', window.scrollY > 400);
+  }, { passive:true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose  = document.getElementById('menuClose');
+  function openMenu() { hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); mobileMenu.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMenu() { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('open'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', () => mobileMenu.classList.contains('open') ? closeMenu() : openMenu());
+  menuClose.addEventListener('click', closeMenu);
+  mobileMenu.addEventListener('click', e => { if(e.target === mobileMenu) closeMenu(); });
+</script>
+</body>
+</html>

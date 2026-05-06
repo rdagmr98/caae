@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Corso MEDEVAC al CAAE – Forward Medical Evacuation. L'addestramento per l'evacuazione medica avanzata dei feriti in teatro operativo.">
+  <title>Corso MEDEVAC | CAAE Viterbo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+    .chip-row { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+    .chip { display:inline-flex; align-items:center; gap:.4rem; padding:.4rem .9rem; border-radius:20px; font-size:.8rem; font-family:'Rajdhani',sans-serif; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+    .chip-gold { background:rgba(201,162,39,.15); color:var(--gold); border:1px solid rgba(201,162,39,.3); }
+    .chip-green { background:rgba(30,160,60,.15); color:#6fdf80; border:1px solid rgba(30,160,60,.3); }
+    .chip-blue { background:rgba(30,110,220,.15); color:#6eb3ff; border:1px solid rgba(30,110,220,.3); }
+    .callout { background:rgba(201,162,39,.07); border-left:3px solid var(--gold); border-radius:0 var(--radius) var(--radius) 0; padding:1.2rem 1.5rem; margin:1.5rem 0; }
+    .callout p { font-size:.92rem; color:#c8d4e3; line-height:1.75; font-style:italic; }
+    .back-btn { display:inline-flex; align-items:center; gap:.5rem; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.88rem; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); }
+    .detail-section { padding: 4.5rem 1.5rem; }
+    .detail-section:nth-child(even) { background: rgba(255,255,255,.02); }
+    .nav-sub-links { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:2rem; justify-content:center; }
+    .nav-sub-links a { font-family:'Rajdhani',sans-serif; font-size:.82rem; font-weight:600; color:var(--gray); letter-spacing:.06em; text-transform:uppercase; padding:.4rem .9rem; border:1px solid rgba(255,255,255,.1); border-radius:6px; transition:var(--tr); }
+    .nav-sub-links a:hover, .nav-sub-links a.active { border-color:var(--gold); color:var(--gold); background:rgba(201,162,39,.07); }
+    .golden-hour { background:linear-gradient(135deg,rgba(201,162,39,.12) 0%,rgba(180,30,30,.08) 100%); border:1px solid rgba(201,162,39,.25); border-radius:var(--radius); padding:2rem; text-align:center; margin:2rem 0; }
+    .golden-hour-num { font-family:'Rajdhani',sans-serif; font-size:5rem; font-weight:700; color:var(--gold); line-height:1; }
+    .golden-hour-label { font-family:'Rajdhani',sans-serif; font-size:1.2rem; font-weight:600; color:#fff; letter-spacing:.1em; text-transform:uppercase; }
+    .golden-hour-sub { font-size:.88rem; color:#8b9ab0; margin-top:.5rem; }
+    .phase-list { display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem; }
+    .phase-item { display:flex; gap:1.2rem; align-items:flex-start; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:1.2rem; transition:var(--tr); }
+    .phase-item:hover { border-color:rgba(201,162,39,.3); background:rgba(201,162,39,.04); }
+    .phase-num-circle { width:42px; height:42px; border-radius:50%; background:rgba(201,162,39,.15); border:2px solid rgba(201,162,39,.3); display:flex; align-items:center; justify-content:center; font-family:'Rajdhani',sans-serif; font-size:1.2rem; font-weight:700; color:var(--gold); flex-shrink:0; }
+    .phase-body h4 { font-family:'Rajdhani',sans-serif; font-size:1rem; font-weight:700; color:#fff; margin-bottom:.3rem; }
+    .phase-body p { font-size:.84rem; color:#8b9ab0; line-height:1.65; }
+  </style>
+</head>
+<body>
+
+<div id="dynamic-bg">
+  <div class="bg-layer active" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg/1280px-Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg')"></div>
+</div>
+<div class="bg-overlay"></div>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/CoA_mil_ITA_centro_aves.png" alt="Stemma CAAE">
+    <span>CAAE · Viterbo</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#about">Chi Siamo</a></li>
+    <li><a href="../index.html#storia">Storia</a></li>
+    <li><a href="../index.html#attivita">Attività</a></li>
+    <li><a href="../index.html#flotta">Flotta</a></li>
+    <li><a href="../index.html#bandiera">Bandiera</a></li>
+    <li><a href="../index.html#contatti">Contatti</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" role="button" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu principale">
+  <button class="mobile-close" id="menuClose" aria-label="Chiudi menu">✕</button>
+  <a href="../index.html#about" onclick="closeMenu()">Chi Siamo</a>
+  <a href="../index.html#storia" onclick="closeMenu()">Storia</a>
+  <a href="../index.html#attivita" onclick="closeMenu()">Attività</a>
+  <a href="../index.html#flotta" onclick="closeMenu()">Flotta</a>
+  <a href="../index.html#bandiera" onclick="closeMenu()">Bandiera</a>
+  <a href="../index.html#contatti" onclick="closeMenu()">Contatti</a>
+</div>
+
+<!-- HERO -->
+<div class="sub-hero">
+  <div class="sub-hero-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg/1280px-Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg')"></div>
+  <div class="sub-hero-overlay"></div>
+  <div class="sub-hero-content">
+    <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="../index.html#attivita">Attività</a> › MEDEVAC</p>
+    <h1>Corso MEDEVAC</h1>
+    <p>Forward Medical Evacuation – Salvare vite in teatro operativo: la filosofia della golden hour</p>
+    <div class="chip-row" style="justify-content:center; margin-top:1rem;">
+      <span class="chip chip-green">Fwd MEDEVAC</span>
+      <span class="chip chip-gold">Golden Hour</span>
+      <span class="chip chip-blue">NVG Ops</span>
+    </div>
+  </div>
+</div>
+
+<!-- CORSI NAV -->
+<div style="background:rgba(10,22,40,.9); border-bottom:1px solid rgba(255,255,255,.06); padding:.9rem 1.5rem;">
+  <div class="container">
+    <div class="nav-sub-links">
+      <a href="piloti.html">🚁 Piloti</a>
+      <a href="specialisti.html">⚙️ Specialisti</a>
+      <a href="sere.html">🎖️ S.E.R.E.</a>
+      <a href="medevac.html" class="active">🏥 MEDEVAC</a>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="detail-section">
+  <div class="container">
+    <div class="content-grid">
+      <div class="sticky-img" data-aos="fade-right">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg/960px-Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg" alt="AB-212 AVES in missione MEDEVAC ISAF" loading="lazy">
+        <p style="font-size:.72rem; color:var(--gray); margin-top:.5rem;">AB-212 AVES in missione MEDEVAC in Afghanistan (ISAF) · © Esercito Italiano</p>
+        <div class="golden-hour" style="margin-top:1.5rem;">
+          <div class="golden-hour-num">60'</div>
+          <div class="golden-hour-label">La Golden Hour</div>
+          <div class="golden-hour-sub">Ogni procedura MEDEVAC è progettata per raggiungere le cure definitive entro 60 minuti dall'evento traumatico</div>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <p class="label">Forward Medical Evacuation</p>
+        <div class="divider" style="margin:.7rem 0 1.2rem;"></div>
+        <h2 class="section-heading" style="margin-bottom:1.2rem;">Salvare vite in teatro:<br>la <span class="gold">golden hour</span></h2>
+        <p class="body-text">Il <strong style="color:#fff">Corso MEDEVAC</strong> (Medical Evacuation) prepara piloti, specialisti di bordo e personale sanitario alle procedure di <strong style="color:var(--gold)">evacuazione medica avanzata</strong> in teatro operativo. La filosofia di base è la cosiddetta <strong style="color:#fff">"golden hour"</strong>: il principio medico-militare per cui un ferito grave deve ricevere cure definitive entro 60 minuti dall'evento traumatico per massimizzare le probabilità di sopravvivenza.</p>
+        <p class="body-text" style="margin-top:1rem;">Il CAAE è riconosciuto come centro di eccellenza nazionale per la <strong style="color:#fff">Forward MEDEVAC</strong>, una specialità dell'AVES che ha salvato centinaia di vite nelle missioni internazionali in Libano, Somalia, Balcani, Afghanistan e nelle emergenze di protezione civile in Italia. Il corso integra TCCC (Tactical Combat Casualty Care), procedure di volo, coordinamento con personale sanitario e operazioni notturne con NVG.</p>
+        <div class="callout">
+          <p>"La Forward MEDEVAC dell'AVES è un'eccellenza riconosciuta a livello internazionale. La capacità di raggiungere i feriti gravi in ambienti contesi e trasportarli in sicurezza entro la golden hour ha fatto la differenza tra la vita e la morte in decine di missioni." — <em>Esercito Italiano</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FASI DEL CORSO -->
+<div class="detail-section">
+  <div class="container">
+    <div class="content-grid">
+      <div data-aos="fade-right">
+        <p class="label">Contenuto del corso</p>
+        <div class="divider" style="margin:.7rem 0 1.2rem;"></div>
+        <h2 class="section-heading" style="font-size:clamp(1.5rem,4vw,2.4rem); margin-bottom:1.5rem;">Dal trauma alle cure definitive</h2>
+        <div class="phase-list">
+          <div class="phase-item">
+            <div class="phase-num-circle">01</div>
+            <div class="phase-body">
+              <h4>TCCC – Tactical Combat Casualty Care</h4>
+              <p>Gestione del ferito in condizioni tattiche. Tre fasi: Care Under Fire, Tactical Field Care, Tactical Evacuation Care. Protocolli per controllo emorragie, gestione vie aeree, trattamento shock.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-num-circle">02</div>
+            <div class="phase-body">
+              <h4>Procedure di richiesta e attivazione MEDEVAC</h4>
+              <p>Il "9-Line MEDEVAC Request" secondo standard NATO (STANAG 3204). Procedura di comunicazione che consente di richiedere l'evacuazione medica con tutte le informazioni necessarie in meno di 60 secondi.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-num-circle">03</div>
+            <div class="phase-body">
+              <h4>Configurazione MEDEVAC dell'aeromobile</h4>
+              <p>Riconfigurare rapidamente l'elicottero in assetto MEDEVAC: installazione barelle, predisposizione attrezzatura medica, ottimizzazione spazi per il personale sanitario. Procedure standardizzate per LUH 196 D.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-num-circle">04</div>
+            <div class="phase-body">
+              <h4>Operazioni in ambiente conteso (HHOC)</h4>
+              <p>Hot Hoist / Hover Ops in Contested environment. Procedure per operare in zone soggette a fuoco nemico, estrazione con verricello, sicurezza del sito di pick-up, coordinamento con le forze a terra.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-num-circle">05</div>
+            <div class="phase-body">
+              <h4>Operazioni notturne NVG</h4>
+              <p>Tutto il syllabus MEDEVAC è replicato in condizioni di oscurità con visori notturni (NVG). La maggior parte delle evacuazioni critiche avviene di notte: la qualificazione NVG è indispensabile.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-num-circle">06</div>
+            <div class="phase-body">
+              <h4>Esercitazioni integrate ospedale da campo</h4>
+              <p>Esercitazioni con personale del Corpo di Sanità Militare e degli ospedali da campo dell'Esercito. Simulazione completa dalla chiamata all'arrivo al Role 2/3. Certificazione NATO MEDEVAC Crew.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="card" style="margin-bottom:1.5rem;">
+          <p class="label" style="margin-bottom:.8rem;">Chi partecipa</p>
+          <ul style="display:flex; flex-direction:column; gap:.6rem;">
+            <li style="font-size:.88rem; color:#c8d4e3; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">▶</span> Piloti AVES destinati a reparti con ruolo MEDEVAC</li>
+            <li style="font-size:.88rem; color:#c8d4e3; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">▶</span> Specialisti di bordo / verricellisti</li>
+            <li style="font-size:.88rem; color:#c8d4e3; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">▶</span> Personale del Corpo di Sanità Militare</li>
+            <li style="font-size:.88rem; color:#c8d4e3; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">▶</span> Combat Medic destinati a teatro operativo</li>
+            <li style="font-size:.88rem; color:#c8d4e3; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">▶</span> Personale di nazioni NATO (su accordo)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="label" style="margin-bottom:.6rem;">Piattaforme per MEDEVAC</p>
+          <div style="display:flex; flex-direction:column; gap:.5rem; margin-top:.3rem;">
+            <a href="../flotta/luh196d.html" style="display:flex; align-items:center; gap:.8rem; padding:.6rem; border-radius:8px; background:rgba(255,255,255,.03); transition:var(--tr);" onmouseover="this.style.background='rgba(201,162,39,.06)'" onmouseout="this.style.background='rgba(255,255,255,.03)'">
+              <span style="font-size:1.4rem;">🏥</span>
+              <div><div style="font-family:'Rajdhani',sans-serif; font-weight:700; color:#fff; font-size:.95rem;">LUH 196 D</div><div style="font-size:.78rem; color:var(--gray);">Piattaforma MEDEVAC principale</div></div>
+              <span style="margin-left:auto; color:var(--gold); font-size:.8rem;">→</span>
+            </a>
+            <a href="../flotta/ab205.html" style="display:flex; align-items:center; gap:.8rem; padding:.6rem; border-radius:8px; background:rgba(255,255,255,.03); transition:var(--tr);" onmouseover="this.style.background='rgba(201,162,39,.06)'" onmouseout="this.style.background='rgba(255,255,255,.03)'">
+              <span style="font-size:1.4rem;">🚁</span>
+              <div><div style="font-family:'Rajdhani',sans-serif; font-weight:700; color:#fff; font-size:.95rem;">AB 205</div><div style="font-size:.78rem; color:var(--gray);">Storica piattaforma MEDEVAC AVES</div></div>
+              <span style="margin-left:auto; color:var(--gold); font-size:.8rem;">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="detail-section" style="background:rgba(201,162,39,.05); border-top:1px solid rgba(201,162,39,.15);">
+  <div class="container" style="text-align:center;" data-aos="fade-up">
+    <p class="label">Altri corsi CAAE</p>
+    <div class="divider"></div>
+    <h2 class="section-heading" style="margin-bottom:1.5rem;">Esplora le altre attività</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+      <a href="piloti.html" class="btn btn-outline">Corsi Piloti →</a>
+      <a href="specialisti.html" class="btn btn-outline">Specialisti →</a>
+      <a href="sere.html" class="btn btn-gold">S.E.R.E. →</a>
+    </div>
+    <div style="margin-top:2rem;">
+      <a href="../index.html#attivita" class="back-btn">← Torna alle attività</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Distintivo_del_Comando_Aviazione_dell%27Esercito.png" alt="Logo AVES">
+    <span>Centro Addestrativo Aviazione dell'Esercito</span>
+  </div>
+  <nav class="footer-links" aria-label="Link footer">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#attivita">Corsi</a>
+    <a href="../index.html#flotta">Flotta</a>
+    <a href="../bandiera.html">Bandiera</a>
+    <a href="../storia.html">Storia</a>
+  </nav>
+  <p class="footer-copy">
+    Sito non ufficiale a scopo informativo · Realizzato dal <strong style="color:var(--gold)">Cap. ing. (AVES) RN Gianmarco ARDIA</strong>
+  </p>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna su">↑</button>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ once:true, duration:750, easing:'ease-out-cubic', offset:50 });
+  const nav = document.getElementById('navbar');
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    btt.classList.toggle('show', window.scrollY > 400);
+  }, { passive:true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose  = document.getElementById('menuClose');
+  function openMenu() { hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); mobileMenu.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMenu() { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('open'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', () => mobileMenu.classList.contains('open') ? closeMenu() : openMenu());
+  menuClose.addEventListener('click', closeMenu);
+  mobileMenu.addEventListener('click', e => { if(e.target === mobileMenu) closeMenu(); });
+</script>
+</body>
+</html>

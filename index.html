@@ -5,483 +5,369 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Centro Addestrativo Aviazione dell'Esercito (CAAE) – Viterbo. Il cuore della formazione dei piloti e degli specialisti dell'Aviazione dell'Esercito Italiano.">
   <title>CAAE – Centro Addestrativo Aviazione dell'Esercito</title>
-
-  <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
 
   <style>
-    /* ═══════════════════════════════════════════════
-       ROOT & TOKENS
-    ═══════════════════════════════════════════════ */
-    :root {
-      --navy:    #0a1628;
-      --navy2:   #0f2040;
-      --olive:   #1a3a1a;
-      --green:   #2d5a27;
-      --gold:    #c9a227;
-      --gold2:   #e8c252;
-      --light:   #eef2f7;
-      --white:   #ffffff;
-      --gray:    #8b9ab0;
-      --radius:  12px;
-      --shadow:  0 8px 32px rgba(0,0,0,.45);
-      --tr:      0.4s cubic-bezier(.4,0,.2,1);
-    }
+  /* ═══ HERO ═══ */
+  #hero{
+    position:relative;min-height:100svh;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    text-align:center;padding:5.5rem 1.5rem 3rem;
+    display:flex;flex-direction:column;align-items:center;gap:1.1rem;
+    max-width:820px;width:100%;
+  }
+  .hero-logo{
+    width:130px;height:auto;object-fit:contain;
+    filter:drop-shadow(0 0 24px rgba(201,162,39,.6));
+    animation:float 4.5s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .hero-title{
+    font-family:'Rajdhani',sans-serif;font-weight:700;
+    font-size:clamp(2.1rem,6vw,4.2rem);
+    line-height:1.05;color:#fff;
+    animation:fadeDown .9s .3s both;
+  }
+  .hero-title span{color:var(--gold)}
+  .hero-sub{
+    font-size:clamp(.9rem,2.2vw,1.1rem);color:#c8d4e3;
+    letter-spacing:.06em;
+    animation:fadeDown .9s .5s both;
+  }
+  .hero-motto{
+    font-family:'Rajdhani',sans-serif;font-style:italic;
+    font-size:clamp(.85rem,2vw,1rem);
+    color:var(--gold2);letter-spacing:.18em;text-transform:uppercase;
+    animation:fadeDown .9s .7s both;
+  }
+  .hero-eyebrow{animation:fadeDown .9s .1s both}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeDown .9s .9s both}
+  .hero-scroll{
+    position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+    z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem;
+    animation:fadeUp 1s 1.2s both;
+  }
+  .hero-scroll span{font-size:.68rem;letter-spacing:.2em;color:var(--gray);text-transform:uppercase}
+  .scroll-line{width:1px;height:38px;background:linear-gradient(to bottom,transparent,var(--gold));animation:scrollDown 1.6s ease-in-out infinite}
+  @keyframes scrollDown{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(1);transform-origin:bottom}}
+  /* Radar rings */
+  .radar{
+    position:absolute;border-radius:50%;border:1px solid rgba(201,162,39,.1);
+    top:50%;left:50%;transform:translate(-50%,-50%);
+    animation:radarPulse 3.8s ease-out infinite;pointer-events:none;
+  }
+  .radar-1{width:700px;height:700px}
+  .radar-2{width:450px;height:450px;animation-delay:.9s}
+  .radar-3{width:220px;height:220px;animation-delay:1.8s}
+  @keyframes radarPulse{0%{opacity:.5;transform:translate(-50%,-50%) scale(.7)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}}
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-    /* ═══════════════════════════════════════════════
-       RESET
-    ═══════════════════════════════════════════════ */
-    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-    html { scroll-behavior:smooth; }
-    body { font-family:'Inter',sans-serif; background:var(--navy); color:var(--light); overflow-x:hidden; }
-    img  { max-width:100%; display:block; }
-    a    { text-decoration:none; color:inherit; }
-    ul   { list-style:none; }
+  /* ═══ ABOUT ═══ */
+  #about{background:transparent}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+  .about-img-wrap{position:relative;border-radius:var(--radius);overflow:hidden}
+  .about-img-wrap img{width:100%;height:380px;object-fit:cover;border-radius:var(--radius);transition:transform .6s}
+  .about-img-wrap:hover img{transform:scale(1.04)}
+  .about-img-caption{font-size:.72rem;color:var(--gray);text-align:center;margin-top:.5rem}
+  .about-text{text-align:center}
+  .about-text p.body-text{text-align:justify}
+  .stats-row{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2rem}
+  .stat-box{
+    background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.2);
+    border-radius:var(--radius);padding:1rem;text-align:center;
+  }
+  .stat-num{font-family:'Rajdhani',sans-serif;font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1}
+  .stat-label{font-size:.75rem;letter-spacing:.08em;color:var(--gray);text-transform:uppercase;margin-top:.2rem}
 
-    /* ═══════════════════════════════════════════════
-       TYPOGRAPHY HELPERS
-    ═══════════════════════════════════════════════ */
-    .label  { font-family:'Rajdhani',sans-serif; font-size:.75rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); }
-    .title  { font-family:'Rajdhani',sans-serif; font-weight:700; line-height:1.1; }
-    .body-text { font-size:1rem; line-height:1.75; color:#c8d4e3; }
-    .gold  { color:var(--gold); }
-    .section-heading { font-family:'Rajdhani',sans-serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:700; }
+  /* ═══ STORIA ═══ */
+  #storia{background:transparent}
+  .timeline{position:relative}
+  .timeline::before{
+    content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;
+    background:linear-gradient(to bottom,transparent,var(--gold) 10%,var(--gold) 90%,transparent);
+    transform:translateX(-50%);
+  }
+  .tl-item{
+    display:grid;grid-template-columns:1fr 20px 1fr;
+    gap:2rem;align-items:start;margin-bottom:3rem;
+  }
+  .tl-dot{
+    width:14px;height:14px;border-radius:50%;
+    background:var(--gold);border:3px solid var(--navy);
+    box-shadow:0 0 0 3px rgba(201,162,39,.25);
+    margin-top:.35rem;flex-shrink:0;
+    transition:box-shadow var(--tr);
+  }
+  .tl-item:hover .tl-dot{box-shadow:0 0 0 7px rgba(201,162,39,.2)}
+  .tl-content{
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+    border-radius:var(--radius);padding:1.3rem 1.5rem;
+    transition:var(--tr);
+  }
+  .tl-content:hover{border-color:rgba(201,162,39,.3);background:rgba(201,162,39,.04)}
+  .tl-year{font-family:'Rajdhani',sans-serif;font-size:1.9rem;font-weight:700;color:var(--gold);line-height:1}
+  .tl-title{font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:600;color:#fff;margin:.2rem 0 .4rem}
+  .tl-text{font-size:.87rem;color:#8b9ab0;line-height:1.65}
+  .tl-tag{display:inline-block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;background:rgba(201,162,39,.1);color:var(--gold);border:1px solid rgba(201,162,39,.25);border-radius:4px;margin-bottom:.4rem}
+  /* odd = right; even = left */
+  .tl-item:nth-child(odd)  .tl-left  {grid-column:1;text-align:right}
+  .tl-item:nth-child(odd)  .tl-center{grid-column:2}
+  .tl-item:nth-child(odd)  .tl-right {grid-column:3;opacity:0;pointer-events:none}
+  .tl-item:nth-child(even) .tl-left  {grid-column:1;opacity:0;pointer-events:none}
+  .tl-item:nth-child(even) .tl-center{grid-column:2}
+  .tl-item:nth-child(even) .tl-right {grid-column:3}
 
-    /* ═══════════════════════════════════════════════
-       NAVIGATION
-    ═══════════════════════════════════════════════ */
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:1000;
-      padding:.75rem 1.5rem;
-      display:flex; align-items:center; justify-content:space-between;
-      background:rgba(10,22,40,.5);
-      backdrop-filter:blur(16px) saturate(1.4);
-      -webkit-backdrop-filter:blur(16px) saturate(1.4);
-      border-bottom:1px solid rgba(201,162,39,.15);
-      transition:background var(--tr), padding var(--tr);
-    }
-    nav.scrolled { background:rgba(10,22,40,.95); padding:.55rem 1.5rem; }
-    .nav-brand { display:flex; align-items:center; gap:.7rem; }
-    .nav-brand img { width:40px; height:40px; object-fit:contain; }
-    .nav-brand span { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:var(--white); }
+  /* ═══ ATTIVITÀ ═══ */
+  #attivita{background:transparent}
+  .activities-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+  .activity-card{
+    background:rgba(10,22,40,.7);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:var(--radius);padding:2rem 1.5rem;
+    transition:var(--tr);position:relative;overflow:hidden;display:flex;flex-direction:column;
+  }
+  .activity-card::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(201,162,39,.08) 0%,transparent 60%);
+    opacity:0;transition:opacity var(--tr);
+  }
+  .activity-card:hover{transform:translateY(-6px);border-color:rgba(201,162,39,.4);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .activity-card:hover::before{opacity:1}
+  .activity-icon{font-size:2.8rem;margin-bottom:1rem;display:block}
+  .activity-tag{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+  .activity-title{font-family:'Rajdhani',sans-serif;font-size:1.45rem;font-weight:700;color:#fff;margin-bottom:.7rem}
+  .activity-text{font-size:.88rem;color:#8b9ab0;line-height:1.7;text-align:justify;flex:1}
+  .activity-list{margin-top:1rem;display:flex;flex-direction:column;gap:.35rem}
+  .activity-list li{font-size:.83rem;color:#8b9ab0;padding-left:1rem;position:relative}
+  .activity-list li::before{content:'›';position:absolute;left:0;color:var(--gold)}
+  .activity-link{
+    display:inline-flex;align-items:center;gap:.4rem;margin-top:1.2rem;
+    font-family:'Rajdhani',sans-serif;font-size:.88rem;font-weight:600;
+    color:var(--gold);letter-spacing:.05em;text-transform:uppercase;
+    transition:gap var(--tr),color var(--tr);
+  }
+  .activity-link:hover{gap:.7rem;color:var(--gold2)}
 
-    .nav-links { display:flex; gap:1.8rem; align-items:center; }
-    .nav-links a {
-      font-family:'Rajdhani',sans-serif; font-size:.95rem; font-weight:600;
-      color:#c8d4e3; letter-spacing:.05em; text-transform:uppercase;
-      position:relative; padding-bottom:2px;
-      transition:color var(--tr);
-    }
-    .nav-links a::after {
-      content:''; position:absolute; bottom:0; left:0; width:0; height:2px;
-      background:var(--gold); transition:width var(--tr);
-    }
-    .nav-links a:hover { color:var(--gold2); }
-    .nav-links a:hover::after { width:100%; }
+  /* ═══ FLOTTA ═══ */
+  #flotta{background:transparent}
+  .fleet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.8rem}
+  .heli-card{
+    background:rgba(10,22,40,.75);backdrop-filter:blur(8px);
+    border-radius:var(--radius);overflow:hidden;
+    border:1px solid rgba(255,255,255,.07);transition:var(--tr);
+  }
+  .heli-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.6);border-color:rgba(201,162,39,.3)}
+  .heli-img-wrap{position:relative;height:200px;overflow:hidden}
+  .heli-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .heli-card:hover .heli-img-wrap img{transform:scale(1.07)}
+  .heli-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.9) 0%,transparent 50%)}
+  .heli-badge{
+    position:absolute;top:.9rem;right:.9rem;
+    font-family:'Rajdhani',sans-serif;font-size:.72rem;font-weight:700;
+    letter-spacing:.1em;padding:.25rem .65rem;border-radius:4px;
+  }
+  .badge-active{background:var(--gold);color:var(--navy)}
+  .badge-new{background:#1e6e3a;color:#fff}
+  .badge-legacy{background:rgba(255,255,255,.15);color:#ccc}
+  .heli-body{padding:1.4rem}
+  .heli-name{font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+  .heli-full{font-size:.82rem;color:var(--gold);letter-spacing:.04em;margin-bottom:.7rem}
+  .heli-desc{font-size:.86rem;color:#8b9ab0;line-height:1.7;text-align:justify}
+  .heli-specs{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem}
+  .spec-chip{font-size:.73rem;padding:.22rem .55rem;border-radius:4px;background:rgba(255,255,255,.05);color:#8b9ab0;border:1px solid rgba(255,255,255,.08)}
+  .spec-chip b{color:var(--gold2)}
+  .heli-link{
+    display:flex;align-items:center;justify-content:center;
+    margin-top:1.2rem;padding:.6rem;
+    border-top:1px solid rgba(255,255,255,.06);
+    font-family:'Rajdhani',sans-serif;font-size:.88rem;font-weight:600;
+    color:var(--gold);letter-spacing:.06em;text-transform:uppercase;
+    transition:color var(--tr),background var(--tr);border-radius:0 0 var(--radius) var(--radius);
+    gap:.4rem;
+  }
+  .heli-link:hover{background:rgba(201,162,39,.08);color:var(--gold2)}
 
-    /* Hamburger */
-    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:5px; }
-    .hamburger span { display:block; width:24px; height:2px; background:var(--light); border-radius:2px; transition:var(--tr); }
-    .hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
-    .hamburger.open span:nth-child(2) { opacity:0; }
-    .hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+  /* ═══ BANDIERA ═══ */
+  #bandiera{background:transparent}
+  .bandiera-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+  .bandiera-img-wrap{text-align:center}
+  .bandiera-img-wrap img{width:220px;height:auto;object-fit:contain;filter:drop-shadow(0 8px 32px rgba(201,162,39,.3));margin:0 auto}
+  .dec-grid{display:grid;grid-template-columns:1fr;gap:1.2rem;margin-top:2rem}
+  .dec-card{
+    display:flex;gap:1.2rem;align-items:flex-start;
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+    border-radius:var(--radius);padding:1.2rem;
+    transition:var(--tr);
+  }
+  .dec-card:hover{border-color:rgba(201,162,39,.4);background:rgba(201,162,39,.04);transform:translateX(4px)}
+  .dec-medal{
+    width:52px;height:52px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:1.6rem;
+    border:2px solid rgba(201,162,39,.3);background:rgba(201,162,39,.08);
+  }
+  .dec-body .dec-name{font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+  .dec-body .dec-year{font-size:.72rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
+  .dec-body .dec-mot{font-size:.82rem;color:#8b9ab0;line-height:1.6;font-style:italic}
 
-    .mobile-menu {
-      display:none; position:fixed; top:0; left:0; width:100%; height:100vh;
-      background:rgba(10,22,40,.97); z-index:999; flex-direction:column;
-      align-items:center; justify-content:center; gap:2rem;
-    }
-    .mobile-menu.open { display:flex; }
-    .mobile-menu a { font-family:'Rajdhani',sans-serif; font-size:1.6rem; font-weight:700; color:var(--light); text-transform:uppercase; letter-spacing:.1em; }
-    .mobile-menu a:hover { color:var(--gold); }
+  /* ═══ CONTATTI ═══ */
+  #contatti{background:transparent}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+  .contact-cards{display:flex;flex-direction:column;gap:1rem}
+  .contact-card{
+    display:flex;gap:1rem;align-items:flex-start;
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+    border-radius:var(--radius);padding:1.2rem 1.5rem;transition:var(--tr);
+  }
+  .contact-card:hover{border-color:rgba(201,162,39,.35);background:rgba(201,162,39,.04)}
+  .contact-icon{font-size:1.4rem;width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:rgba(201,162,39,.1);border-radius:8px;flex-shrink:0}
+  .contact-label{font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
+  .contact-value{color:var(--light);font-size:.92rem}
+  .map-wrap{border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+  .map-wrap iframe{width:100%;height:340px;border:none;filter:grayscale(.5) invert(.9) hue-rotate(200deg)}
 
-    /* ═══════════════════════════════════════════════
-       HERO
-    ═══════════════════════════════════════════════ */
-    #hero {
-      position:relative; min-height:100svh; display:flex; align-items:center; justify-content:center;
-      overflow:hidden;
-    }
-    .hero-bg {
-      position:absolute; inset:0;
-      background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg/1280px-Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg') center/cover no-repeat;
-      transform:scale(1.08);
-      animation:heroPan 18s ease-in-out infinite alternate;
-      filter:brightness(.4) saturate(.8);
-    }
-    @keyframes heroPan { from{transform:scale(1.08) translateX(-2%);} to{transform:scale(1.08) translateX(2%);} }
-    .hero-gradient {
-      position:absolute; inset:0;
-      background:linear-gradient(to bottom, rgba(10,22,40,.6) 0%, rgba(10,22,40,.2) 50%, rgba(10,22,40,.92) 100%);
-    }
-    /* Radar rings */
-    .radar {
-      position:absolute; width:600px; height:600px;
-      border-radius:50%; border:1px solid rgba(201,162,39,.12);
-      top:50%; left:50%; transform:translate(-50%,-50%);
-      animation:radarPulse 3.5s ease-out infinite;
-    }
-    .radar:nth-child(2) { width:400px; height:400px; animation-delay:.7s; }
-    .radar:nth-child(3) { width:200px; height:200px; animation-delay:1.4s; }
-    @keyframes radarPulse { 0%{opacity:.5; transform:translate(-50%,-50%) scale(.8);} 100%{opacity:0; transform:translate(-50%,-50%) scale(1.6);} }
-
-    .hero-content {
-      position:relative; z-index:2;
-      text-align:center; padding:2rem 1.5rem;
-      display:flex; flex-direction:column; align-items:center; gap:1.2rem;
-      max-width:800px;
-    }
-    .hero-logo { width:110px; height:110px; object-fit:contain; filter:drop-shadow(0 0 20px rgba(201,162,39,.6)); animation:float 4s ease-in-out infinite; }
-    @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
-    .hero-eyebrow { animation:fadeDown .8s .2s both; }
-    .hero-title {
-      font-family:'Rajdhani',sans-serif; font-weight:700;
-      font-size:clamp(2rem,6vw,4rem);
-      line-height:1.05; color:var(--white);
-      animation:fadeDown .8s .4s both;
-    }
-    .hero-title span { color:var(--gold); }
-    .hero-sub {
-      font-size:clamp(.9rem,2vw,1.1rem); color:#c8d4e3; letter-spacing:.08em;
-      animation:fadeDown .8s .6s both;
-    }
-    .hero-motto {
-      font-family:'Rajdhani',sans-serif; font-style:italic; font-size:1rem;
-      color:var(--gold2); letter-spacing:.15em; text-transform:uppercase;
-      animation:fadeDown .8s .8s both;
-    }
-    .btn {
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.85rem 2rem; border-radius:6px;
-      font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1rem;
-      letter-spacing:.1em; text-transform:uppercase;
-      transition:var(--tr); cursor:pointer; border:none;
-    }
-    .btn-gold {
-      background:var(--gold); color:var(--navy);
-      box-shadow:0 4px 24px rgba(201,162,39,.4);
-      animation:fadeDown .8s 1s both;
-    }
-    .btn-gold:hover { background:var(--gold2); transform:translateY(-2px); box-shadow:0 8px 32px rgba(201,162,39,.5); }
-    .btn-outline {
-      background:transparent; color:var(--light);
-      border:2px solid rgba(201,162,39,.5);
-    }
-    .btn-outline:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
-
-    @keyframes fadeDown { from{opacity:0;transform:translateY(-24px);} to{opacity:1;transform:translateY(0);} }
-    @keyframes fadeUp   { from{opacity:0;transform:translateY(24px);}  to{opacity:1;transform:translateY(0);} }
-
-    .hero-scroll { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:.4rem; animation:fadeUp 1s 1.4s both; }
-    .hero-scroll span { font-size:.7rem; letter-spacing:.2em; color:var(--gray); text-transform:uppercase; }
-    .scroll-line { width:1px; height:40px; background:linear-gradient(to bottom, transparent, var(--gold)); animation:scrollDown 1.5s ease-in-out infinite; }
-    @keyframes scrollDown { 0%{opacity:0;transform:scaleY(0);transform-origin:top;} 50%{opacity:1;transform:scaleY(1);} 100%{opacity:0;transform:scaleY(1);transform-origin:bottom;} }
-
-    /* ═══════════════════════════════════════════════
-       SECTIONS
-    ═══════════════════════════════════════════════ */
-    section { padding:6rem 1.5rem; }
-    .container { max-width:1100px; margin:0 auto; }
-    .section-intro { margin-bottom:3.5rem; }
-    .divider { width:60px; height:3px; background:var(--gold); margin:.8rem 0 1.2rem; border-radius:2px; }
-
-    /* ═══════════════════════════════════════════════
-       ABOUT
-    ═══════════════════════════════════════════════ */
-    #about { background:var(--navy2); }
-    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
-    .about-image-wrap { position:relative; border-radius:var(--radius); overflow:hidden; }
-    .about-image-wrap img { width:100%; height:380px; object-fit:cover; border-radius:var(--radius); transition:transform .6s; }
-    .about-image-wrap:hover img { transform:scale(1.04); }
-    .about-badge {
-      position:absolute; bottom:-1px; left:-1px; right:-1px; padding:1.2rem 1.5rem;
-      background:linear-gradient(to top, rgba(10,22,40,1) 0%, transparent 100%);
-    }
-    .stats-row { display:flex; gap:2rem; margin-top:2rem; flex-wrap:wrap; }
-    .stat-item { text-align:center; }
-    .stat-num { font-family:'Rajdhani',sans-serif; font-size:2.4rem; font-weight:700; color:var(--gold); line-height:1; }
-    .stat-label { font-size:.8rem; letter-spacing:.1em; color:var(--gray); text-transform:uppercase; margin-top:.2rem; }
-
-    /* ═══════════════════════════════════════════════
-       HISTORY TIMELINE
-    ═══════════════════════════════════════════════ */
-    #storia { background:var(--navy); }
-    .timeline { position:relative; padding:0; }
-    .timeline::before {
-      content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
-      background:linear-gradient(to bottom, transparent, var(--gold), transparent);
-      transform:translateX(-50%);
-    }
-    .tl-item {
-      display:grid; grid-template-columns:1fr auto 1fr; gap:2rem; align-items:start;
-      margin-bottom:3rem;
-    }
-    .tl-item:nth-child(odd)  .tl-content { grid-column:1; grid-row:1; text-align:right; }
-    .tl-item:nth-child(odd)  .tl-empty   { grid-column:3; grid-row:1; }
-    .tl-item:nth-child(even) .tl-content { grid-column:3; grid-row:1; text-align:left; }
-    .tl-item:nth-child(even) .tl-empty   { grid-column:1; grid-row:1; }
-    .tl-dot {
-      grid-column:2; grid-row:1;
-      width:14px; height:14px; border-radius:50%;
-      background:var(--gold); border:3px solid var(--navy);
-      box-shadow:0 0 0 3px rgba(201,162,39,.3);
-      margin-top:.35rem; flex-shrink:0;
-      transition:box-shadow var(--tr);
-    }
-    .tl-item:hover .tl-dot { box-shadow:0 0 0 6px rgba(201,162,39,.25); }
-    .tl-year { font-family:'Rajdhani',sans-serif; font-size:1.8rem; font-weight:700; color:var(--gold); line-height:1; }
-    .tl-title { font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:600; color:var(--white); margin:.2rem 0 .4rem; }
-    .tl-text  { font-size:.9rem; color:#8b9ab0; line-height:1.6; }
-    .tl-tag { display:inline-block; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; padding:.2rem .6rem; background:rgba(201,162,39,.1); color:var(--gold); border:1px solid rgba(201,162,39,.3); border-radius:4px; margin-bottom:.4rem; }
-
-    /* ═══════════════════════════════════════════════
-       ACTIVITIES
-    ═══════════════════════════════════════════════ */
-    #attivita { background:var(--navy2); }
-    .activities-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; }
-    .activity-card {
-      background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
-      border-radius:var(--radius); padding:2rem 1.5rem;
-      transition:var(--tr); position:relative; overflow:hidden;
-    }
-    .activity-card::before {
-      content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(201,162,39,.07) 0%, transparent 60%);
-      opacity:0; transition:opacity var(--tr);
-    }
-    .activity-card:hover { transform:translateY(-6px); border-color:rgba(201,162,39,.4); box-shadow:0 16px 48px rgba(0,0,0,.4); }
-    .activity-card:hover::before { opacity:1; }
-    .activity-icon { font-size:2.8rem; margin-bottom:1rem; display:block; }
-    .activity-tag { font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; }
-    .activity-title { font-family:'Rajdhani',sans-serif; font-size:1.4rem; font-weight:700; color:var(--white); margin-bottom:.8rem; }
-    .activity-text  { font-size:.9rem; color:#8b9ab0; line-height:1.7; }
-    .activity-list  { margin-top:1rem; display:flex; flex-direction:column; gap:.4rem; }
-    .activity-list li { font-size:.85rem; color:#8b9ab0; padding-left:1rem; position:relative; }
-    .activity-list li::before { content:'›'; position:absolute; left:0; color:var(--gold); }
-
-    /* ═══════════════════════════════════════════════
-       FLEET
-    ═══════════════════════════════════════════════ */
-    #flotta { background:var(--navy); }
-    .fleet-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.8rem; }
-    .heli-card {
-      background:var(--navy2); border-radius:var(--radius); overflow:hidden;
-      border:1px solid rgba(255,255,255,.06); transition:var(--tr);
-      position:relative;
-    }
-    .heli-card:hover { transform:translateY(-8px); box-shadow:0 24px 60px rgba(0,0,0,.5); border-color:rgba(201,162,39,.3); }
-    .heli-img-wrap { position:relative; height:200px; overflow:hidden; }
-    .heli-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform .6s; }
-    .heli-card:hover .heli-img-wrap img { transform:scale(1.07); }
-    .heli-img-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(15,32,64,.9) 0%, transparent 50%); }
-    .heli-badge { position:absolute; top:1rem; right:1rem; background:var(--gold); color:var(--navy); font-family:'Rajdhani',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.1em; padding:.3rem .7rem; border-radius:4px; }
-    .heli-body { padding:1.5rem; }
-    .heli-name { font-family:'Rajdhani',sans-serif; font-size:1.5rem; font-weight:700; color:var(--white); margin-bottom:.3rem; }
-    .heli-full { font-size:.85rem; color:var(--gold); letter-spacing:.05em; margin-bottom:.8rem; }
-    .heli-desc { font-size:.88rem; color:#8b9ab0; line-height:1.7; }
-    .heli-specs { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.2rem; }
-    .spec-chip {
-      font-size:.75rem; padding:.25rem .6rem; border-radius:4px;
-      background:rgba(255,255,255,.05); color:#8b9ab0; border:1px solid rgba(255,255,255,.08);
-      display:flex; align-items:center; gap:.3rem;
-    }
-    .spec-chip span { color:var(--gold2); }
-
-    /* ═══════════════════════════════════════════════
-       GALLERY STRIP
-    ═══════════════════════════════════════════════ */
-    #galleria { padding:0; overflow:hidden; }
-    .gallery-track {
-      display:flex; gap:4px;
-      animation:galleryScroll 30s linear infinite;
-      width:max-content;
-    }
-    .gallery-track:hover { animation-play-state:paused; }
-    @keyframes galleryScroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
-    .gallery-item { width:280px; height:180px; overflow:hidden; flex-shrink:0; }
-    .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
-    .gallery-item:hover img { transform:scale(1.06); }
-
-    /* ═══════════════════════════════════════════════
-       CONTACT
-    ═══════════════════════════════════════════════ */
-    #contatti { background:var(--navy2); }
-    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
-    .contact-card {
-      background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
-      border-radius:var(--radius); padding:2rem; display:flex; gap:1rem; align-items:flex-start;
-      transition:var(--tr);
-    }
-    .contact-card:hover { border-color:rgba(201,162,39,.4); background:rgba(201,162,39,.04); }
-    .contact-icon { font-size:1.5rem; flex-shrink:0; width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:rgba(201,162,39,.1); border-radius:8px; }
-    .contact-label { font-family:'Rajdhani',sans-serif; font-size:.75rem; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); margin-bottom:.3rem; }
-    .contact-value { color:var(--light); font-size:.95rem; }
-    .contact-cards { display:flex; flex-direction:column; gap:1rem; }
-    .map-wrap { border-radius:var(--radius); overflow:hidden; height:100%; min-height:320px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; }
-    .map-wrap iframe { width:100%; height:320px; border:none; filter:grayscale(.6) invert(.8) hue-rotate(200deg); }
-
-    /* ═══════════════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════════════ */
-    footer {
-      background:rgba(0,0,0,.5); border-top:1px solid rgba(255,255,255,.06);
-      padding:2.5rem 1.5rem 1.5rem; text-align:center;
-    }
-    .footer-logo { display:flex; align-items:center; justify-content:center; gap:.8rem; margin-bottom:1rem; }
-    .footer-logo img { width:36px; height:36px; object-fit:contain; }
-    .footer-logo span { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1rem; color:var(--white); }
-    .footer-links { display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; margin-bottom:1.2rem; }
-    .footer-links a { font-size:.85rem; color:var(--gray); transition:color var(--tr); }
-    .footer-links a:hover { color:var(--gold); }
-    .footer-copy { font-size:.8rem; color:var(--gray); line-height:1.7; }
-    .footer-copy a { color:var(--gold); }
-
-    /* ═══════════════════════════════════════════════
-       BACK-TO-TOP BUTTON
-    ═══════════════════════════════════════════════ */
-    #btt {
-      position:fixed; bottom:1.5rem; right:1.5rem; z-index:500;
-      width:44px; height:44px; border-radius:50%;
-      background:var(--gold); color:var(--navy); border:none; cursor:pointer;
-      display:flex; align-items:center; justify-content:center;
-      font-size:1.2rem; box-shadow:var(--shadow);
-      opacity:0; transform:translateY(20px) scale(.8); pointer-events:none;
-      transition:var(--tr);
-    }
-    #btt.show { opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
-    #btt:hover { background:var(--gold2); transform:scale(1.1); }
-
-    /* ═══════════════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════════════ */
-    @media(max-width:900px) {
-      .nav-links { display:none; }
-      .hamburger { display:flex; }
-      .about-grid,
-      .contact-grid { grid-template-columns:1fr; gap:2.5rem; }
-      .tl-item { grid-template-columns:auto 1fr; gap:1rem; }
-      .tl-item:nth-child(odd)  .tl-content,
-      .tl-item:nth-child(even) .tl-content { grid-column:2; text-align:left; }
-      .tl-item:nth-child(odd)  .tl-empty,
-      .tl-item:nth-child(even) .tl-empty   { display:none; }
-      .tl-dot { grid-column:1; }
-      .timeline::before { left:7px; }
-    }
-    @media(max-width:600px) {
-      section { padding:4rem 1rem; }
-      .hero-content { padding:1.5rem 1rem; }
-      .stats-row { gap:1.2rem; }
-    }
+  /* ═══ MOBILE RESPONSIVE ═══ */
+  @media(max-width:900px){
+    .about-grid,.bandiera-grid,.contact-grid{grid-template-columns:1fr}
+    .timeline::before{left:7px}
+    .tl-item{grid-template-columns:16px 1fr!important;gap:1rem!important}
+    .tl-item .tl-right,.tl-item .tl-left{display:none!important}
+    .tl-item:nth-child(odd)  .tl-center,
+    .tl-item:nth-child(even) .tl-center{grid-column:2!important}
+    .tl-dot{grid-column:1!important;margin-top:.4rem}
+    .tl-item:nth-child(odd) .tl-content{text-align:left!important}
+    .about-img-wrap img{height:260px}
+    .bandiera-img-wrap{margin-bottom:1.5rem}
+  }
+  @media(max-width:600px){
+    .hero-logo{width:100px}
+    .radar-1{width:300px;height:300px}
+    .radar-2{width:200px;height:200px}
+    .radar-3{display:none}
+    .stats-row{grid-template-columns:1fr 1fr}
+    .hero-btns{flex-direction:column;width:100%;max-width:300px}
+    .hero-btns .btn{justify-content:center;text-align:center}
+  }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+<!-- ═══ DYNAMIC BACKGROUNDS ═══ -->
+<div id="dynamic-bg">
+  <div class="bg-layer active" id="bg-hero"   style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg/1280px-Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg')"></div>
+  <div class="bg-layer"        id="bg-about"  style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Italian_Army_Aviation_AB_205_helicopter.png/1280px-Italian_Army_Aviation_AB_205_helicopter.png')"></div>
+  <div class="bg-layer"        id="bg-storia" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mangusta_Iraq.jpg/1280px-Mangusta_Iraq.jpg')"></div>
+  <div class="bg-layer"        id="bg-attivita" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg/1280px-Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg')"></div>
+  <div class="bg-layer"        id="bg-flotta" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/1280px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg')"></div>
+  <div class="bg-layer"        id="bg-bandiera" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Italian_Army_Boeing_%28Elicotteri_Meridionali%29_CH-47C_Chinook_%28219%29_Bidini-1.jpg/1280px-Italian_Army_Boeing_%28Elicotteri_Meridionali%29_CH-47C_Chinook_%28219%29_Bidini-1.jpg')"></div>
+  <div class="bg-layer"        id="bg-contatti" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg/1280px-Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg')"></div>
+</div>
+<div class="bg-overlay"></div>
+
+<!-- ═══ NAV ═══ -->
 <nav id="navbar">
   <a href="#hero" class="nav-brand">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/CoA_mil_ITA_centro_aves.png" alt="Stemma CAAE">
-    <span>CAAE</span>
+    <span>CAAE · Viterbo</span>
   </a>
   <ul class="nav-links">
     <li><a href="#about">Chi Siamo</a></li>
     <li><a href="#storia">Storia</a></li>
     <li><a href="#attivita">Attività</a></li>
     <li><a href="#flotta">Flotta</a></li>
+    <li><a href="#bandiera">Bandiera</a></li>
     <li><a href="#contatti">Contatti</a></li>
   </ul>
-  <div class="hamburger" id="hamburger" role="button" aria-label="Menu">
+  <div class="hamburger" id="hamburger" role="button" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </div>
 </nav>
 
-<!-- Mobile menu -->
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu principale">
+  <button class="mobile-close" id="menuClose" aria-label="Chiudi menu">✕</button>
   <a href="#about"    onclick="closeMenu()">Chi Siamo</a>
   <a href="#storia"   onclick="closeMenu()">Storia</a>
   <a href="#attivita" onclick="closeMenu()">Attività</a>
   <a href="#flotta"   onclick="closeMenu()">Flotta</a>
+  <a href="#bandiera" onclick="closeMenu()">Bandiera</a>
   <a href="#contatti" onclick="closeMenu()">Contatti</a>
+  <a href="bandiera.html" onclick="closeMenu()" style="font-size:1rem;color:var(--gold)">→ Approfondimenti</a>
 </div>
 
-<!-- ═══════════════════ HERO ═══════════════════ -->
+<!-- ═══ HERO ═══ -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-gradient"></div>
-  <div class="radar"></div>
-  <div class="radar"></div>
-  <div class="radar"></div>
-
+  <div class="radar radar-1"></div>
+  <div class="radar radar-2"></div>
+  <div class="radar radar-3"></div>
   <div class="hero-content">
+    <p class="label hero-eyebrow">Aviazione dell'Esercito Italiano &nbsp;·&nbsp; Viterbo</p>
     <img class="hero-logo" src="https://upload.wikimedia.org/wikipedia/commons/5/58/CoA_mil_ITA_centro_aves.png" alt="Stemma CAAE">
-    <p class="label hero-eyebrow">Aviazione dell'Esercito Italiano · Viterbo</p>
     <h1 class="hero-title">
       Centro Addestrativo<br>
       <span>Aviazione dell'Esercito</span>
     </h1>
-    <p class="hero-sub">Caserma Ten. M.O. Dante Chelotti · Viterbo · dal 1951</p>
+    <p class="hero-sub">Caserma Ten. M.O. Dante Chelotti &nbsp;·&nbsp; Viterbo &nbsp;·&nbsp; dal 1951</p>
     <p class="hero-motto">"Volat &mdash; Agile &mdash; Rapide &mdash; Observat"</p>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+    <div class="hero-btns">
       <a href="#about" class="btn btn-gold">Scopri di più</a>
       <a href="#flotta" class="btn btn-outline">La Flotta</a>
     </div>
   </div>
-
-  <div class="hero-scroll">
-    <span>Scorri</span>
-    <div class="scroll-line"></div>
-  </div>
+  <div class="hero-scroll"><span>Scorri</span><div class="scroll-line"></div></div>
 </section>
 
-<!-- ═══════════════════ ABOUT ═══════════════════ -->
+<!-- ═══ ABOUT ═══ -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
       <div data-aos="fade-right" data-aos-duration="800">
-        <div class="about-image-wrap">
+        <div class="about-img-wrap">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Italian_Army_Aviation_AB_205_helicopter.png/960px-Italian_Army_Aviation_AB_205_helicopter.png"
-               alt="AB-205 AVES" loading="lazy">
-          <div class="about-badge">
-            <p class="label">© Esercito Italiano – CC BY 2.5</p>
-          </div>
+               alt="AB-205 AVES in volo" loading="lazy">
         </div>
+        <p class="about-img-caption">AB-205 dell'Aviazione dell'Esercito · © Esercito Italiano (CC BY 2.5)</p>
       </div>
-      <div data-aos="fade-left" data-aos-duration="800">
+      <div data-aos="fade-left" data-aos-duration="800" class="about-text">
         <p class="label">Chi siamo</p>
         <div class="divider"></div>
-        <h2 class="section-heading" style="margin-bottom:1.2rem;">
-          Il polo di eccellenza<br>dell'aviazione militare
-        </h2>
+        <h2 class="section-heading" style="margin-bottom:1.2rem;">Il polo di eccellenza<br>dell'aviazione militare</h2>
         <p class="body-text">
-          Il <strong style="color:var(--white)">Centro Addestrativo Aviazione dell'Esercito (CAAE)</strong> è
-          il principale istituto di formazione e addestramento dei piloti, tecnici ed equipaggi
+          Il <strong style="color:#fff">Centro Addestrativo Aviazione dell'Esercito (CAAE)</strong>
+          è il principale istituto di formazione e addestramento dei piloti, tecnici ed equipaggi
           dell'<strong style="color:var(--gold)">Aviazione dell'Esercito (AVES)</strong>, con sede a Viterbo
           presso la Caserma intitolata al Tenente Medaglia d'Oro al Valor Militare Dante Chelotti.
         </p>
         <p class="body-text" style="margin-top:1rem;">
-          Fondato nel <strong style="color:var(--white)">1951</strong>, il Centro forma piloti e specialisti
-          per i reparti di volo dell'Esercito Italiano e di nazioni alleate. Punto di riferimento nazionale
-          e internazionale per corsi di eccellenza quali il SERE, il MEDEVAC e la formazione su piattaforme
-          elicotteristiche avanzate.
+          Fondato il <strong style="color:#fff">10 maggio 1951</strong>, il Centro forma piloti e specialisti
+          per i reparti di volo dell'Esercito Italiano e di nazioni alleate, essendo riconosciuto come
+          centro di eccellenza nazionale e internazionale. Impegno addestrativo e operativo si fondono
+          in un'istituzione che porta con orgoglio il <strong style="color:var(--gold)">Basco Azzurro</strong>
+          dal 1971.
         </p>
-        <div class="stats-row" style="margin-top:2rem;">
-          <div class="stat-item">
+        <div class="stats-row">
+          <div class="stat-box">
             <div class="stat-num" data-count="1951" data-display="year">1951</div>
-            <div class="stat-label">Anno di fondazione</div>
+            <div class="stat-label">Anno fondazione</div>
           </div>
-          <div class="stat-item">
+          <div class="stat-box">
             <div class="stat-num" data-count="73">73+</div>
             <div class="stat-label">Anni di storia</div>
           </div>
-          <div class="stat-item">
-            <div class="stat-num">2</div>
-            <div class="stat-label">Decorazioni al valor</div>
+          <div class="stat-box">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Onorificenze</div>
           </div>
-          <div class="stat-item">
+          <div class="stat-box">
             <div class="stat-num">4+</div>
-            <div class="stat-label">Tipi di aeromobili</div>
+            <div class="stat-label">Tipi aeromobili</div>
           </div>
         </div>
       </div>
@@ -489,106 +375,92 @@
   </div>
 </section>
 
-<!-- ═══════════════════ STORIA ═══════════════════ -->
+<!-- ═══ STORIA ═══ -->
 <section id="storia">
   <div class="container">
     <div class="section-intro" data-aos="fade-up">
       <p class="label">La nostra storia</p>
       <div class="divider"></div>
       <h2 class="section-heading">Oltre 70 anni di eccellenza</h2>
-      <p class="body-text" style="max-width:600px;margin-top:.8rem;">
+      <p class="body-text" style="max-width:600px;margin:.8rem auto 0;text-align:center;">
         Dalla Bracciano del 1951 alla Viterbo odierna, il CAAE ha scritto la storia
-        dell'aviazione militare italiana, formando generazioni di piloti e specialisti.
+        dell'aviazione militare italiana.
       </p>
+      <div style="margin-top:1.5rem;">
+        <a href="storia.html" class="btn btn-outline" style="font-size:.85rem;padding:.65rem 1.4rem;">Approfondisci la storia →</a>
+      </div>
     </div>
-
     <div class="timeline">
 
+      <!-- 1951 -->
       <div class="tl-item" data-aos="fade-right">
-        <div class="tl-content">
+        <div class="tl-content tl-left">
           <span class="tl-tag">Origini</span>
           <div class="tl-year">1951</div>
           <div class="tl-title">Reparto Aereo di Artiglieria</div>
-          <p class="tl-text">Il 10 maggio viene creato il primo Reparto Aereo di Artiglieria alle dipendenze della Scuola di Artiglieria di Bracciano, primo nucleo di quella che diventerà l'aviazione dell'esercito.</p>
+          <p class="tl-text">10 maggio: nasce il primo nucleo aereo a Bracciano, alle dipendenze della Scuola di Artiglieria. Primo passo verso un'aviazione dell'esercito autonoma.</p>
         </div>
-        <div class="tl-dot"></div>
-        <div class="tl-empty"></div>
+        <div class="tl-dot tl-center"></div>
+        <div class="tl-right"></div>
       </div>
 
+      <!-- 1957 -->
       <div class="tl-item" data-aos="fade-left">
-        <div class="tl-empty"></div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <span class="tl-tag">Evoluzione</span>
+        <div class="tl-left"></div>
+        <div class="tl-dot tl-center"></div>
+        <div class="tl-content tl-right">
+          <span class="tl-tag">Scuola autonoma</span>
           <div class="tl-year">1957</div>
-          <div class="tl-title">Scuola autonoma CAALE</div>
-          <p class="tl-text">Il 1° giugno assume la denominazione di Centro Addestramento Aviazione Leggera dell'Esercito (CAALE), diventando Scuola autonoma alle dipendenze dell'Ispettorato ALE.</p>
+          <div class="tl-title">CAALE – Scuola autonoma</div>
+          <p class="tl-text">Assume la denominazione di Centro Addestramento ALE e diventa Scuola autonoma. Entrano in servizio i primi elicotteri.</p>
         </div>
       </div>
 
+      <!-- 1958 -->
       <div class="tl-item" data-aos="fade-right">
-        <div class="tl-content">
+        <div class="tl-content tl-left">
           <span class="tl-tag">Viterbo</span>
           <div class="tl-year">1958</div>
-          <div class="tl-title">Trasferimento definitivo a Viterbo</div>
-          <p class="tl-text">Il Centro si stabilisce nella Caserma "Ten. M.O. Dante Chelotti" di Viterbo. Il 14 maggio viene consegnata la Bandiera di Istituto, data fondativa simbolica della Specialità.</p>
+          <div class="tl-title">Viterbo: la casa definitiva</div>
+          <p class="tl-text">Trasferimento definitivo nella Caserma "Ten. M.O. Dante Chelotti". Il 14 maggio viene consegnata la Bandiera di Istituto.</p>
         </div>
-        <div class="tl-dot"></div>
-        <div class="tl-empty"></div>
+        <div class="tl-dot tl-center"></div>
+        <div class="tl-right"></div>
       </div>
 
+      <!-- 1971 -->
       <div class="tl-item" data-aos="fade-left">
-        <div class="tl-empty"></div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
+        <div class="tl-left"></div>
+        <div class="tl-dot tl-center"></div>
+        <div class="tl-content tl-right">
           <span class="tl-tag">Identità</span>
           <div class="tl-year">1971</div>
           <div class="tl-title">Il Basco Azzurro</div>
-          <p class="tl-text">Il 20 maggio, nel ventennale dell'ALE, viene concesso il Basco Azzurro a tutto il personale della Specialità: simbolo identitario tuttora portato con orgoglio.</p>
+          <p class="tl-text">Nel ventennale, il Capo di SME consegna il Basco Azzurro a tutto il personale dell'ALE. Simbolo identitario tutt'oggi portato con orgoglio.</p>
         </div>
       </div>
 
+      <!-- 1993 -->
       <div class="tl-item" data-aos="fade-right">
-        <div class="tl-content">
-          <span class="tl-tag">Riconoscimento</span>
+        <div class="tl-content tl-left">
+          <span class="tl-tag">Eccellenza</span>
           <div class="tl-year">1993</div>
           <div class="tl-title">Nasce l'AVES</div>
-          <p class="tl-text">La Specialità assume la denominazione di Aviazione dell'Esercito (AVES). La Bandiera del Centro riceve la Medaglia d'Oro al Valore dell'Esercito per l'impegno nelle missioni internazionali di pace.</p>
+          <p class="tl-text">La Specialità assume la denominazione AVES. La Bandiera è insignita della Medaglia d'Oro al Valore dell'Esercito per le missioni internazionali di pace.</p>
         </div>
-        <div class="tl-dot"></div>
-        <div class="tl-empty"></div>
+        <div class="tl-dot tl-center"></div>
+        <div class="tl-right"></div>
       </div>
 
+      <!-- 2025 -->
       <div class="tl-item" data-aos="fade-left">
-        <div class="tl-empty"></div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <span class="tl-tag">Riorganizzazione</span>
-          <div class="tl-year">1997</div>
-          <div class="tl-title">Gr. Sqd. "AURIGA"</div>
-          <p class="tl-text">Il Centro viene posto alle dipendenze del Comando AVES e costituisce il 1° Gruppo Squadroni "AURIGA" e il 1° Gruppo Squadroni "SESTANTE", dando nuova fisionomia all'addestramento.</p>
-        </div>
-      </div>
-
-      <div class="tl-item" data-aos="fade-right">
-        <div class="tl-content">
-          <span class="tl-tag">AVES moderno</span>
-          <div class="tl-year">2003</div>
-          <div class="tl-title">Raggruppamento Addestrativo AVES</div>
-          <p class="tl-text">Con decreto del Ministero della Difesa, viene ufficialmente istituita la Specialità AVES e il Centro assume la denominazione definitiva di Centro Addestrativo Aviazione dell'Esercito.</p>
-        </div>
-        <div class="tl-dot"></div>
-        <div class="tl-empty"></div>
-      </div>
-
-      <div class="tl-item" data-aos="fade-left">
-        <div class="tl-empty"></div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
+        <div class="tl-left"></div>
+        <div class="tl-dot tl-center"></div>
+        <div class="tl-content tl-right">
           <span class="tl-tag">Oggi</span>
           <div class="tl-year">2025</div>
           <div class="tl-title">Il LUH AW169 entra in servizio</div>
-          <p class="tl-text">L'Esercito riceve i primi esemplari del nuovo Light Utility Helicopter Leonardo AW169 (LUH 196), destinato a sostituire progressivamente gli storici AB-205, AB-206 e AB-212, segnando una nuova era per il CAAE.</p>
+          <p class="tl-text">Consegna dei primi Leonardo UH-169D (LUH 196). Nuova era per il CAAE che aggiorna la flotta con tecnologie all'avanguardia.</p>
         </div>
       </div>
 
@@ -596,58 +468,59 @@
   </div>
 </section>
 
-<!-- ═══════════════════ ATTIVITÀ ═══════════════════ -->
+<!-- ═══ ATTIVITÀ ═══ -->
 <section id="attivita">
   <div class="container">
     <div class="section-intro" data-aos="fade-up">
       <p class="label">Le attività</p>
       <div class="divider"></div>
       <h2 class="section-heading">Formazione di eccellenza</h2>
-      <p class="body-text" style="max-width:620px;margin-top:.8rem;">
-        Il CAAE offre un ampio spettro di corsi e addestramenti, formando personale militare
-        italiano e straniero per le più impegnative missioni operative.
+      <p class="body-text" style="max-width:600px;margin:.8rem auto 0;text-align:center;">
+        Un ampio spettro di corsi e addestramenti per personale militare italiano e delle nazioni alleate.
       </p>
     </div>
-
     <div class="activities-grid">
 
       <div class="activity-card" data-aos="fade-up" data-aos-delay="0">
         <span class="activity-icon">🚁</span>
         <p class="activity-tag">Corso Base & Avanzato</p>
         <h3 class="activity-title">Corsi Piloti</h3>
-        <p class="activity-text">Formazione completa per i futuri piloti militari di elicottero, dalla teoria all'abilitazione pratica su diverse piattaforme dell'AVES.</p>
+        <p class="activity-text">Formazione completa per i futuri piloti militari di elicottero, dalla teoria aerodinamica all'abilitazione pratica su diverse piattaforme dell'AVES.</p>
         <ul class="activity-list">
           <li>Corso Allievi Ufficiali Piloti (AUPE)</li>
-          <li>Brevetto Militare di Pilota di Elicottero</li>
-          <li>Abilitazione su tipo macchina (AB-206, LUH)</li>
+          <li>Brevetto Militare Pilota Elicottero</li>
+          <li>Type Rating (AB-206, LUH 196)</li>
           <li>Formazione avanzata crew</li>
         </ul>
+        <a href="corsi/piloti.html" class="activity-link">Approfondisci ›</a>
       </div>
 
       <div class="activity-card" data-aos="fade-up" data-aos-delay="100">
         <span class="activity-icon">⚙️</span>
         <p class="activity-tag">Tecnica & Specialistica</p>
         <h3 class="activity-title">Corsi Specialisti</h3>
-        <p class="activity-text">Addestramento tecnico per manutentori, meccanici ed elettronici responsabili dell'efficienza operativa della flotta elicotteristica.</p>
+        <p class="activity-text">Addestramento tecnico per manutentori, meccanici ed elettronici responsabili dell'efficienza operativa della flotta elicotteristica dell'Esercito.</p>
         <ul class="activity-list">
-          <li>Specialisti meccanici di elicottero</li>
+          <li>Specialisti meccanici elicottero</li>
           <li>Specialisti elettronici aviazione</li>
-          <li>Operatori verricello e mitraglieri di bordo</li>
+          <li>Operatori verricello &amp; mitraglieri</li>
           <li>Antincendio aeroportuale</li>
         </ul>
+        <a href="corsi/specialisti.html" class="activity-link">Approfondisci ›</a>
       </div>
 
       <div class="activity-card" data-aos="fade-up" data-aos-delay="200">
         <span class="activity-icon">🎖️</span>
         <p class="activity-tag">Survival · Evasion · Resistance · Escape</p>
         <h3 class="activity-title">S.E.R.E.</h3>
-        <p class="activity-text">Corso avanzato di sopravvivenza e recupero per equipaggi catturati o abbattuti in territorio ostile. Parte integrante della dottrina NATO di Personnel Recovery.</p>
+        <p class="activity-text">Corso avanzato di sopravvivenza e recupero per equipaggi in territorio ostile. Parte integrante della dottrina NATO di Personnel Recovery.</p>
         <ul class="activity-list">
-          <li>Tecniche di sopravvivenza in ambiente ostile</li>
+          <li>Sopravvivenza in ambiente ostile</li>
           <li>Evasione e movimento clandestino</li>
           <li>Resistenza all'interrogatorio</li>
-          <li>Procedure di recupero (CSAR/PR)</li>
+          <li>Procedure CSAR/Personnel Recovery</li>
         </ul>
+        <a href="corsi/sere.html" class="activity-link">Approfondisci ›</a>
       </div>
 
       <div class="activity-card" data-aos="fade-up" data-aos-delay="300">
@@ -656,139 +529,184 @@
         <h3 class="activity-title">MEDEVAC</h3>
         <p class="activity-text">Addestramento per l'evacuazione medica avanzata in teatro operativo. La filosofia della "golden hour" orienta ogni procedura addestrativa.</p>
         <ul class="activity-list">
-          <li>Gestione del ferito in zona calda (TCCC)</li>
-          <li>Procedure Fwd MEDEVAC con elicottero</li>
+          <li>Gestione del ferito (TCCC)</li>
+          <li>Procedure Fwd MEDEVAC</li>
           <li>Coordinamento con personale sanitario</li>
-          <li>Operazioni notturne e NVG</li>
+          <li>Operazioni notturne NVG</li>
         </ul>
+        <a href="corsi/medevac.html" class="activity-link">Approfondisci ›</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ FLOTTA ═══════════════════ -->
+<!-- ═══ FLOTTA ═══ -->
 <section id="flotta">
   <div class="container">
     <div class="section-intro" data-aos="fade-up">
       <p class="label">La flotta</p>
       <div class="divider"></div>
       <h2 class="section-heading">Gli elicotteri del CAAE</h2>
-      <p class="body-text" style="max-width:620px;margin-top:.8rem;">
+      <p class="body-text" style="max-width:600px;margin:.8rem auto 0;text-align:center;">
         Dal leggero JetRanger al moderno AW169, ogni piattaforma racconta un capitolo
         della storia addestrativa dell'aviazione militare italiana.
       </p>
     </div>
-
     <div class="fleet-grid">
 
-      <!-- LUH 196 B -->
       <div class="heli-card" data-aos="fade-up" data-aos-delay="0">
         <div class="heli-img-wrap">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/960px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg"
                alt="LUH 196 B" loading="lazy">
           <div class="heli-img-overlay"></div>
-          <div class="heli-badge">IN SERVIZIO</div>
+          <span class="heli-badge badge-active">IN SERVIZIO</span>
         </div>
         <div class="heli-body">
           <div class="heli-name">LUH 196 B</div>
           <div class="heli-full">Leonardo UH-169B · variante training</div>
-          <p class="heli-desc">Variante addestrativa del nuovo Light Utility Helicopter dell'Esercito, con carrello retrattile. Destinato alla formazione dei nuovi piloti AVES, è l'avanguardia tecnologica del CAAE.</p>
+          <p class="heli-desc">Variante addestrativa bimotore con carrello retrattile. Destinato alla formazione avanzata dei nuovi piloti AVES, integra avionics di ultima generazione.</p>
           <div class="heli-specs">
-            <div class="spec-chip">🌀 <span>Turbomotore</span> doppio</div>
-            <div class="spec-chip">📡 <span>AFCS</span> integrato</div>
-            <div class="spec-chip">🌙 <span>NVG</span> compatibile</div>
+            <div class="spec-chip"><b>Config.</b> training</div>
+            <div class="spec-chip"><b>Motori</b> 2× turbine</div>
+            <div class="spec-chip"><b>NVG</b> compatibile</div>
           </div>
         </div>
+        <a href="flotta/luh196b.html" class="heli-link">Scheda tecnica &amp; galleria →</a>
       </div>
 
-      <!-- LUH 196 D -->
       <div class="heli-card" data-aos="fade-up" data-aos-delay="100">
         <div class="heli-img-wrap">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/960px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg"
-               alt="LUH 196 D" loading="lazy" style="filter:hue-rotate(15deg) brightness(1.05);">
+               alt="LUH 196 D"
+               loading="lazy"
+               style="filter:hue-rotate(20deg) brightness(1.05) saturate(0.9);">
           <div class="heli-img-overlay"></div>
-          <div class="heli-badge" style="background:#1e6e3a;color:#fff;">NUOVO 2025</div>
+          <span class="heli-badge badge-new">NUOVO 2025</span>
         </div>
         <div class="heli-body">
           <div class="heli-name">LUH 196 D</div>
           <div class="heli-full">Leonardo UH-169D · variante operativa</div>
-          <p class="heli-desc">Versione operativa con pattini fissi e capacità multiruolo. Sostituirà progressivamente i vecchi AB-205, AB-212 e AB-412 nei ruoli di utilità leggera, MEDEVAC e supporto.</p>
+          <p class="heli-desc">Versione operativa con pattini fissi e capacità multiruolo. Sostituisce progressivamente AB-205, AB-212 nei ruoli di utilità, MEDEVAC e supporto.</p>
           <div class="heli-specs">
-            <div class="spec-chip">🏥 <span>MEDEVAC</span> ready</div>
-            <div class="spec-chip">⚡ <span>FARP</span> capability</div>
-            <div class="spec-chip">📡 <span>Glass</span> cockpit</div>
+            <div class="spec-chip"><b>Config.</b> operativa</div>
+            <div class="spec-chip"><b>MEDEVAC</b> ready</div>
+            <div class="spec-chip"><b>Glass</b> cockpit</div>
           </div>
         </div>
+        <a href="flotta/luh196d.html" class="heli-link">Scheda tecnica &amp; galleria →</a>
       </div>
 
-      <!-- AB 205 -->
       <div class="heli-card" data-aos="fade-up" data-aos-delay="200">
         <div class="heli-img-wrap">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Italian_Army_Aviation_AB_205_helicopter.png/960px-Italian_Army_Aviation_AB_205_helicopter.png"
                alt="AB-205" loading="lazy">
           <div class="heli-img-overlay"></div>
-          <div class="heli-badge" style="background:#555;color:#fff;">STORICO</div>
+          <span class="heli-badge badge-legacy">STORICO</span>
         </div>
         <div class="heli-body">
           <div class="heli-name">AB 205</div>
-          <div class="heli-full">Agusta-Bell 205 · "Huey"</div>
-          <p class="heli-desc">Versione italiana del leggendario Bell UH-1 "Iroquois". Cavallo di battaglia dell'AVES per decenni, impiegato in operazioni di soccorso, trasporto e MEDEVAC in Italia e all'estero.</p>
+          <div class="heli-full">Agusta-Bell 205 "Huey" · dal 1966</div>
+          <p class="heli-desc">Versione italiana del leggendario Bell UH-1. Cavallo di battaglia dell'AVES per decenni, impiegato in soccorso, trasporto e MEDEVAC in Italia e all'estero.</p>
           <div class="heli-specs">
-            <div class="spec-chip">👥 <span>Capacità</span> 10+2 pax</div>
-            <div class="spec-chip">✈️ <span>Dal</span> 1966</div>
-            <div class="spec-chip">🌍 <span>Missioni</span> ONU/NATO</div>
+            <div class="spec-chip"><b>Pax</b> fino a 10</div>
+            <div class="spec-chip"><b>Ruolo</b> multiruolo</div>
+            <div class="spec-chip"><b>ONU/NATO</b> missions</div>
           </div>
         </div>
+        <a href="flotta/ab205.html" class="heli-link">Scheda tecnica &amp; galleria →</a>
       </div>
 
-      <!-- AB 206 -->
       <div class="heli-card" data-aos="fade-up" data-aos-delay="300">
         <div class="heli-img-wrap">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg/960px-Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg"
-               alt="AB-206" loading="lazy">
+               alt="AB-206 a Viterbo" loading="lazy">
           <div class="heli-img-overlay"></div>
-          <div class="heli-badge" style="background:#555;color:#fff;">STORICO</div>
+          <span class="heli-badge badge-legacy">STORICO</span>
         </div>
         <div class="heli-body">
           <div class="heli-name">AB 206</div>
-          <div class="heli-full">Agusta-Bell 206 JetRanger · Viterbo</div>
-          <p class="heli-desc">Elicottero leggero monomotore da collegamento, principal piattaforma addestrativa del CAAE per oltre 40 anni. Fotografato proprio all'aeroporto "T. Fabbri" di Viterbo.</p>
+          <div class="heli-full">Agusta-Bell 206 JetRanger · Viterbo LIRV</div>
+          <p class="heli-desc">Principale piattaforma addestrativa del CAAE per oltre 40 anni. Fotografato all'aeroporto "T. Fabbri" di Viterbo, dove ha operato fino agli anni recenti.</p>
           <div class="heli-specs">
-            <div class="spec-chip">🎓 <span>Ruolo</span> addestrativo</div>
-            <div class="spec-chip">✈️ <span>Dal</span> 1970</div>
-            <div class="spec-chip">📍 <span>Viterbo</span> LIRV</div>
+            <div class="spec-chip"><b>Ruolo</b> addestrativo</div>
+            <div class="spec-chip"><b>Dal</b> 1970</div>
+            <div class="spec-chip"><b>Base</b> Viterbo LIRV</div>
           </div>
         </div>
+        <a href="flotta/ab206.html" class="heli-link">Scheda tecnica &amp; galleria →</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ GALLERY STRIP ═══════════════════ -->
-<div id="galleria" aria-hidden="true">
-  <div class="gallery-track">
-    <!-- set 1 -->
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mangusta_Iraq.jpg/600px-Mangusta_Iraq.jpg" alt="A129 Iraq" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg/600px-Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg" alt="AB-212 ISAF" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg/600px-Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg" alt="AB-412" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Italian_Army_Aviation_AB_205_helicopter.png/600px-Italian_Army_Aviation_AB_205_helicopter.png" alt="AB-205" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg/600px-Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg" alt="AB-206" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/600px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg" alt="UH-169B" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Italian_Army_Boeing_%28Elicotteri_Meridionali%29_CH-47C_Chinook_%28219%29_Bidini-1.jpg/600px-Italian_Army_Boeing_%28Elicotteri_Meridionali%29_CH-47C_Chinook_%28219%29_Bidini-1.jpg" alt="CH-47 Chinook" loading="lazy"></div>
-    <!-- set 2 (duplicate for seamless loop) -->
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mangusta_Iraq.jpg/600px-Mangusta_Iraq.jpg" alt="A129 Iraq" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg/600px-Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg" alt="AB-212 ISAF" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg/600px-Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg" alt="AB-412" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Italian_Army_Aviation_AB_205_helicopter.png/600px-Italian_Army_Aviation_AB_205_helicopter.png" alt="AB-205" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg/600px-Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg" alt="AB-206" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/600px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg" alt="UH-169B" loading="lazy"></div>
-    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Italian_Army_Boeing_%28Elicotteri_Meridionali%29_CH-47C_Chinook_%28219%29_Bidini-1.jpg/600px-Italian_Army_Boeing_%28Elicotteri_Meridionali%29_CH-47C_Chinook_%28219%29_Bidini-1.jpg" alt="CH-47 Chinook" loading="lazy"></div>
-  </div>
-</div>
+<!-- ═══ BANDIERA ═══ -->
+<section id="bandiera">
+  <div class="container">
+    <div class="section-intro" data-aos="fade-up">
+      <p class="label">Onorificenze</p>
+      <div class="divider"></div>
+      <h2 class="section-heading">La Bandiera di Istituto</h2>
+      <p class="body-text" style="max-width:620px;margin:.8rem auto 0;text-align:center;">
+        La Bandiera del CAAE porta i segni tangibili di decenni di servizio, valore e sacrificio:
+        quattro decorazioni che ne testimoniano l'eccellenza.
+      </p>
+    </div>
+    <div class="bandiera-grid">
+      <div class="bandiera-img-wrap" data-aos="fade-right">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/CoA_mil_ITA_centro_aves.png" alt="Stemma CAAE">
+        <p style="margin-top:1.2rem;font-size:.8rem;color:var(--gray);text-align:center;">Stemma del CAAE<br><em>"Volat Agile Rapide Observat"</em></p>
+        <div style="margin-top:1.5rem;text-align:center;">
+          <a href="bandiera.html" class="btn btn-outline" style="font-size:.85rem;padding:.65rem 1.4rem;">Pagina dedicata →</a>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="dec-grid">
 
-<!-- ═══════════════════ CONTATTI ═══════════════════ -->
+          <div class="dec-card">
+            <div class="dec-medal">🥇</div>
+            <div class="dec-body">
+              <div class="dec-name">Medaglia d'Oro al Valore dell'Esercito</div>
+              <div class="dec-year">1993</div>
+              <div class="dec-mot">Conferita per lo slancio, lo spirito di sacrificio e l'altissimo contributo operativo nelle missioni di pace internazionali in Libano, Albania, ex-Jugoslavia, Somalia sotto l'egida ONU e CEE.</div>
+            </div>
+          </div>
+
+          <div class="dec-card">
+            <div class="dec-medal">🎖️</div>
+            <div class="dec-body">
+              <div class="dec-name">Medaglia d'Argento al Valor Civile</div>
+              <div class="dec-year">Conferita</div>
+              <div class="dec-mot">Riconoscimento per l'abnegazione del personale impegnato in interventi di protezione civile a favore delle popolazioni colpite da calamità naturali sul territorio nazionale.</div>
+            </div>
+          </div>
+
+          <div class="dec-card">
+            <div class="dec-medal">⚕️</div>
+            <div class="dec-body">
+              <div class="dec-name">Medaglia d'Oro al Merito della Sanità Pubblica</div>
+              <div class="dec-year">Marzo 1994</div>
+              <div class="dec-mot">Conferita dalla Presidenza del Consiglio per l'essenziale contributo sanitario fornito in Italia e all'estero dai Baschi Azzurri nelle evacuazioni mediche d'emergenza.</div>
+            </div>
+          </div>
+
+          <div class="dec-card">
+            <div class="dec-medal">🏛️</div>
+            <div class="dec-body">
+              <div class="dec-name">Medaglia d'Argento al Merito Civile</div>
+              <div class="dec-year">Febbraio 1996</div>
+              <div class="dec-mot">Conferita dal Ministero dell'Interno per l'opera di soccorso svolta a favore delle popolazioni di Tuscania colpite dal terremoto del 1971.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTATTI ═══ -->
 <section id="contatti">
   <div class="container">
     <div class="section-intro" data-aos="fade-up">
@@ -802,7 +720,7 @@
           <div class="contact-icon">📍</div>
           <div>
             <div class="contact-label">Sede</div>
-            <div class="contact-value">Strada Toscanese, 28<br>01100 Viterbo (VT)</div>
+            <div class="contact-value">Strada Toscanese, 28 · 01100 Viterbo (VT)</div>
           </div>
         </div>
         <div class="contact-card">
@@ -816,39 +734,36 @@
           <div class="contact-icon">✉️</div>
           <div>
             <div class="contact-label">Email istituzionale</div>
-            <div class="contact-value"><a href="mailto:centraviesercito@esercito.difesa.it" style="color:var(--gold2);word-break:break-all;">centraviesercito@esercito.difesa.it</a></div>
+            <div class="contact-value"><a href="mailto:centraviesercito@esercito.difesa.it" style="color:var(--gold2);word-break:break-all">centraviesercito@esercito.difesa.it</a></div>
           </div>
         </div>
         <div class="contact-card">
           <div class="contact-icon">🔒</div>
           <div>
             <div class="contact-label">PEC</div>
-            <div class="contact-value"><a href="mailto:centraviesercito@postacert.difesa.it" style="color:var(--gold2);word-break:break-all;">centraviesercito@postacert.difesa.it</a></div>
+            <div class="contact-value"><a href="mailto:centraviesercito@postacert.difesa.it" style="color:var(--gold2);word-break:break-all">centraviesercito@postacert.difesa.it</a></div>
           </div>
         </div>
         <div class="contact-card">
           <div class="contact-icon">🌐</div>
           <div>
-            <div class="contact-label">Sito ufficiale</div>
-            <div class="contact-value"><a href="https://www.esercito.difesa.it/organizzazione/capo-di-sme/comfoter/comando-aviazione-esercito/centro-addestrativo-aviazione-esercito" target="_blank" rel="noopener" style="color:var(--gold2);">esercito.difesa.it →</a></div>
+            <div class="contact-label">Sito ufficiale Esercito</div>
+            <div class="contact-value"><a href="https://www.esercito.difesa.it" target="_blank" rel="noopener" style="color:var(--gold2)">esercito.difesa.it →</a></div>
           </div>
         </div>
       </div>
       <div data-aos="fade-left">
         <div class="map-wrap">
-          <iframe
-            title="Mappa CAAE Viterbo"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=12.08%2C42.40%2C12.12%2C42.44&layer=mapnik&marker=42.416%2C12.102"
-            loading="lazy"
-            allowfullscreen>
-          </iframe>
+          <iframe title="Mappa CAAE Viterbo"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=12.065%2C42.40%2C12.135%2C42.445&layer=mapnik&marker=42.418%2C12.105"
+            loading="lazy" allowfullscreen></iframe>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-logo">
     <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Distintivo_del_Comando_Aviazione_dell%27Esercito.png" alt="Logo AVES">
@@ -859,90 +774,101 @@
     <a href="#storia">Storia</a>
     <a href="#attivita">Attività</a>
     <a href="#flotta">Flotta</a>
+    <a href="#bandiera">Bandiera</a>
     <a href="#contatti">Contatti</a>
-    <a href="https://www.esercito.difesa.it" target="_blank" rel="noopener">Esercito Italiano</a>
-    <a href="https://www.difesa.it" target="_blank" rel="noopener">Difesa.it</a>
+    <a href="storia.html">Storia approfondita</a>
+    <a href="bandiera.html">La Bandiera</a>
   </nav>
   <p class="footer-copy">
-    Sito non ufficiale realizzato a scopo informativo/educativo.<br>
-    Informazioni da fonti pubbliche: <a href="https://www.esercito.difesa.it" target="_blank" rel="noopener">esercito.difesa.it</a>,
-    <a href="https://it.wikipedia.org" target="_blank" rel="noopener">Wikipedia</a>,
-    <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>.<br>
-    Immagini: © Esercito Italiano (CC BY 2.5), © Colin Cooke (CC BY-SA 2.0), © Aldo Bidini.
+    Sito non ufficiale a scopo informativo · Realizzato dal <strong style="color:var(--gold)">Cap. ing. (AVES) RN Gianmarco ARDIA</strong>
   </p>
 </footer>
 
-<!-- Back to top -->
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna su">↑</button>
 
-<!-- ═══════════════════ AOS + JS ═══════════════════ -->
+<!-- ═══ SCRIPTS ═══ -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-  // Init AOS
-  AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic', offset: 60 });
+  AOS.init({ once:true, duration:750, easing:'ease-out-cubic', offset:50 });
 
-  // Nav scroll
+  // Dynamic background switcher
+  const bgMap = {
+    hero:    'bg-hero',
+    about:   'bg-about',
+    storia:  'bg-storia',
+    attivita:'bg-attivita',
+    flotta:  'bg-flotta',
+    bandiera:'bg-bandiera',
+    contatti:'bg-contatti',
+  };
+  let activeBg = 'bg-hero';
+  function switchBg(id) {
+    if(id === activeBg) return;
+    const prev = document.getElementById(activeBg);
+    if(prev) prev.classList.remove('active');
+    const next = document.getElementById(id);
+    if(next) next.classList.add('active');
+    activeBg = id;
+  }
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting && bgMap[e.target.id]) switchBg(bgMap[e.target.id]);
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
+  // Navbar + back-to-top
   const nav = document.getElementById('navbar');
   const btt = document.getElementById('btt');
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     nav.classList.toggle('scrolled', y > 60);
     btt.classList.toggle('show', y > 400);
-  }, { passive: true });
+  }, { passive:true });
 
   // Hamburger
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-  });
+  const menuClose  = document.getElementById('menuClose');
+  function openMenu() {
+    hamburger.classList.add('open');
+    hamburger.setAttribute('aria-expanded','true');
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
   function closeMenu() {
     hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
     mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
   }
+  hamburger.addEventListener('click', () => mobileMenu.classList.contains('open') ? closeMenu() : openMenu());
+  menuClose.addEventListener('click', closeMenu);
+  mobileMenu.addEventListener('click', e => { if(e.target === mobileMenu) closeMenu(); });
 
   // Counter animation
   const counters = document.querySelectorAll('.stat-num[data-count]');
-  const counterObserver = new IntersectionObserver((entries) => {
+  const cObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
+      if(!entry.isIntersecting) return;
       const el = entry.target;
       const target = parseInt(el.getAttribute('data-count'));
       const isYear = el.getAttribute('data-display') === 'year';
-      const start = isYear ? target - 20 : 0;
-      const duration = 1400;
-      const step = (timestamp) => {
-        if (!start_time) start_time = timestamp;
-        const progress = Math.min((timestamp - start_time) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(start + eased * (target - start));
-        if (progress < 1) requestAnimationFrame(step);
+      const start  = isYear ? target - 20 : 0;
+      let t0 = null;
+      function step(ts) {
+        if(!t0) t0 = ts;
+        const p = Math.min((ts - t0) / 1400, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(start + e * (target - start));
+        if(p < 1) requestAnimationFrame(step);
         else el.textContent = isYear ? target : target + '+';
-      };
-      let start_time = null;
+      }
       requestAnimationFrame(step);
-      counterObserver.unobserve(el);
+      cObs.unobserve(el);
     });
   }, { threshold: 0.5 });
-  counters.forEach(el => counterObserver.observe(el));
-
-  // Smooth active nav link highlight
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const linkObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(a => a.style.color = '');
-        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (active) active.style.color = 'var(--gold)';
-      }
-    });
-  }, { threshold: 0.4 });
-  sections.forEach(s => linkObserver.observe(s));
+  counters.forEach(el => cObs.observe(el));
 </script>
-
 </body>
 </html>

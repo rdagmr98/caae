@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Corso S.E.R.E. al CAAE – Survival, Evasion, Resistance and Escape. L'addestramento alla sopravvivenza degli equipaggi in territorio ostile.">
+  <title>Corso S.E.R.E. | CAAE Viterbo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+    .chip-row { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+    .chip { display:inline-flex; align-items:center; gap:.4rem; padding:.4rem .9rem; border-radius:20px; font-size:.8rem; font-family:'Rajdhani',sans-serif; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+    .chip-gold { background:rgba(201,162,39,.15); color:var(--gold); border:1px solid rgba(201,162,39,.3); }
+    .chip-red { background:rgba(180,30,30,.2); color:#ff8080; border:1px solid rgba(180,30,30,.4); }
+    .chip-blue { background:rgba(30,110,220,.15); color:#6eb3ff; border:1px solid rgba(30,110,220,.3); }
+    .callout { background:rgba(201,162,39,.07); border-left:3px solid var(--gold); border-radius:0 var(--radius) var(--radius) 0; padding:1.2rem 1.5rem; margin:1.5rem 0; }
+    .callout p { font-size:.92rem; color:#c8d4e3; line-height:1.75; font-style:italic; }
+    .back-btn { display:inline-flex; align-items:center; gap:.5rem; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.88rem; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); }
+    .detail-section { padding: 4.5rem 1.5rem; }
+    .detail-section:nth-child(even) { background: rgba(255,255,255,.02); }
+    .nav-sub-links { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:2rem; justify-content:center; }
+    .nav-sub-links a { font-family:'Rajdhani',sans-serif; font-size:.82rem; font-weight:600; color:var(--gray); letter-spacing:.06em; text-transform:uppercase; padding:.4rem .9rem; border:1px solid rgba(255,255,255,.1); border-radius:6px; transition:var(--tr); }
+    .nav-sub-links a:hover, .nav-sub-links a.active { border-color:var(--gold); color:var(--gold); background:rgba(201,162,39,.07); }
+    .sere-phases { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.2rem; margin-top:1.5rem; }
+    .sere-phase { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:1.5rem; text-align:center; transition:var(--tr); }
+    .sere-phase:hover { border-color:rgba(201,162,39,.3); background:rgba(201,162,39,.04); transform:translateY(-4px); }
+    .sere-letter { font-family:'Rajdhani',sans-serif; font-size:3.5rem; font-weight:700; color:var(--gold); line-height:1; margin-bottom:.3rem; }
+    .sere-word { font-family:'Rajdhani',sans-serif; font-size:1rem; font-weight:700; color:#fff; text-transform:uppercase; letter-spacing:.1em; margin-bottom:.5rem; }
+    .sere-desc { font-size:.83rem; color:#8b9ab0; line-height:1.6; }
+    .level-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:1.3rem; margin-bottom:1rem; transition:var(--tr); }
+    .level-card:hover { border-color:rgba(201,162,39,.25); }
+    .level-badge { display:inline-block; font-family:'Rajdhani',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:.25rem .7rem; border-radius:4px; margin-bottom:.6rem; }
+    .lvl-alfa { background:rgba(30,160,60,.15); color:#6fdf80; border:1px solid rgba(30,160,60,.3); }
+    .lvl-bravo { background:rgba(201,162,39,.15); color:var(--gold); border:1px solid rgba(201,162,39,.3); }
+    .lvl-charlie { background:rgba(180,30,30,.2); color:#ff8080; border:1px solid rgba(180,30,30,.4); }
+    .level-title { font-family:'Rajdhani',sans-serif; font-size:1.05rem; font-weight:700; color:#fff; margin-bottom:.3rem; }
+    .level-text { font-size:.86rem; color:#8b9ab0; line-height:1.65; }
+  </style>
+</head>
+<body>
+
+<div id="dynamic-bg">
+  <div class="bg-layer active" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mangusta_Iraq.jpg/1280px-Mangusta_Iraq.jpg')"></div>
+</div>
+<div class="bg-overlay"></div>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/CoA_mil_ITA_centro_aves.png" alt="Stemma CAAE">
+    <span>CAAE · Viterbo</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#about">Chi Siamo</a></li>
+    <li><a href="../index.html#storia">Storia</a></li>
+    <li><a href="../index.html#attivita">Attività</a></li>
+    <li><a href="../index.html#flotta">Flotta</a></li>
+    <li><a href="../index.html#bandiera">Bandiera</a></li>
+    <li><a href="../index.html#contatti">Contatti</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" role="button" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu principale">
+  <button class="mobile-close" id="menuClose" aria-label="Chiudi menu">✕</button>
+  <a href="../index.html#about" onclick="closeMenu()">Chi Siamo</a>
+  <a href="../index.html#storia" onclick="closeMenu()">Storia</a>
+  <a href="../index.html#attivita" onclick="closeMenu()">Attività</a>
+  <a href="../index.html#flotta" onclick="closeMenu()">Flotta</a>
+  <a href="../index.html#bandiera" onclick="closeMenu()">Bandiera</a>
+  <a href="../index.html#contatti" onclick="closeMenu()">Contatti</a>
+</div>
+
+<!-- HERO -->
+<div class="sub-hero">
+  <div class="sub-hero-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mangusta_Iraq.jpg/1280px-Mangusta_Iraq.jpg')"></div>
+  <div class="sub-hero-overlay"></div>
+  <div class="sub-hero-content">
+    <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="../index.html#attivita">Attività</a> › S.E.R.E.</p>
+    <h1>Corso S.E.R.E.</h1>
+    <p>Survival · Evasion · Resistance · Escape – L'addestramento estremo per la sopravvivenza in territorio ostile</p>
+    <div class="chip-row" style="justify-content:center; margin-top:1rem;">
+      <span class="chip chip-red">Addestramento estremo</span>
+      <span class="chip chip-blue">NATO Personnel Recovery</span>
+      <span class="chip chip-gold">AVES – Viterbo</span>
+    </div>
+  </div>
+</div>
+
+<!-- CORSI NAV -->
+<div style="background:rgba(10,22,40,.9); border-bottom:1px solid rgba(255,255,255,.06); padding:.9rem 1.5rem;">
+  <div class="container">
+    <div class="nav-sub-links">
+      <a href="piloti.html">🚁 Piloti</a>
+      <a href="specialisti.html">⚙️ Specialisti</a>
+      <a href="sere.html" class="active">🎖️ S.E.R.E.</a>
+      <a href="medevac.html">🏥 MEDEVAC</a>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="detail-section">
+  <div class="container">
+    <div class="content-grid">
+      <div class="sticky-img" data-aos="fade-right">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mangusta_Iraq.jpg/960px-Mangusta_Iraq.jpg" alt="A129 Mangusta in Iraq" loading="lazy">
+        <p style="font-size:.72rem; color:var(--gray); margin-top:.5rem;">AW-129 Mangusta in Iraq – teatro operativo che richiede elevate capacità SERE · © Esercito Italiano</p>
+      </div>
+      <div data-aos="fade-left">
+        <p class="label">Survival · Evasion · Resistance · Escape</p>
+        <div class="divider" style="margin:.7rem 0 1.2rem;"></div>
+        <h2 class="section-heading" style="margin-bottom:1.2rem;">Le 36 ore più dure<br>della vita di un <span class="gold">militare</span></h2>
+        <p class="body-text">Il <strong style="color:#fff">Corso S.E.R.E.</strong> (Survival, Evasion, Resistance and Escape) è uno degli addestramenti più intensi e selettivi condotti dal CAAE di Viterbo. Nato dalla dottrina NATO di <strong style="color:var(--gold)">Personnel Recovery</strong>, prepara gli equipaggi di volo e il personale esposto al rischio cattura a sopravvivere, evadere, resistere e favorire il proprio recupero in territorio ostile.</p>
+        <p class="body-text" style="margin-top:1rem;">Il corso è articolato su tre livelli progressivi di difficoltà (Alfa, Bravo, Charlie) e dura tipicamente da pochi giorni per i livelli base fino a <strong style="color:#fff">circa una settimana</strong> per il livello avanzato. Il livello Charlie include la simulazione continua di scenari di cattura, movimenti su lunghe distanze, gestione di risorse limitate e simulazioni di detenzione, il tutto sotto costante supervisione medica e psicologica.</p>
+        <div class="callout">
+          <p>"Il corso SERE Charlie rappresenta una delle esperienze più intense e formative della carriera militare. Non si tratta solo di sopravvivere fisicamente, ma di mantenere lucidità mentale, coesione di squadra e rispetto dei valori militari nelle condizioni più avverse."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4 FASI SERE -->
+<div class="detail-section">
+  <div class="container">
+    <div data-aos="fade-up" style="text-align:center; margin-bottom:2rem;">
+      <p class="label">L'acronimo</p>
+      <div class="divider"></div>
+      <h2 class="section-heading">Le 4 componenti S.E.R.E.</h2>
+    </div>
+    <div class="sere-phases" data-aos="fade-up">
+      <div class="sere-phase">
+        <div class="sere-letter">S</div>
+        <div class="sere-word">Survival</div>
+        <div class="sere-desc">Tecniche di sopravvivenza in ambiente ostile: procacciare acqua e cibo, costruire ripari, orientamento senza strumenti, gestione delle risorse limitate in ogni tipo di ambiente operativo.</div>
+      </div>
+      <div class="sere-phase">
+        <div class="sere-letter">E</div>
+        <div class="sere-word">Evasion</div>
+        <div class="sere-desc">Tecniche di evasione dal nemico e movimento clandestino in territorio controllato da forze ostili. Navigazione notturna, mimetizzazione, segnalazione per il recupero, comunicazioni d'emergenza.</div>
+      </div>
+      <div class="sere-phase">
+        <div class="sere-letter">R</div>
+        <div class="sere-word">Resistance</div>
+        <div class="sere-desc">Resistenza all'interrogatorio e alla pressione psicologica in caso di cattura. Addestramento al mantenimento della coesione mentale, ai limiti delle informazioni che possono essere rivelate (Codice di Condotta).</div>
+      </div>
+      <div class="sere-phase">
+        <div class="sere-letter">E</div>
+        <div class="sere-word">Escape</div>
+        <div class="sere-desc">Procedure per facilitare l'evasione dalla detenzione e favorire il recupero (Personnel Recovery) da parte delle forze amiche. CSAR, segnalazione, procedure di autenticazione e contatto.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIVELLI -->
+<div class="detail-section">
+  <div class="container">
+    <div class="content-grid">
+      <div data-aos="fade-right">
+        <p class="label">I tre livelli</p>
+        <div class="divider" style="margin:.7rem 0 1.2rem;"></div>
+        <h2 class="section-heading" style="font-size:clamp(1.5rem,4vw,2.4rem); margin-bottom:1.5rem;">Da Alfa a Charlie</h2>
+        <div class="level-card">
+          <span class="level-badge lvl-alfa">Livello Alfa</span>
+          <div class="level-title">Addestramento Teorico</div>
+          <div class="level-text">Fase introduttiva teorica. Introduce i concetti fondamentali del SERE, la dottrina NATO di Personnel Recovery, le normative internazionali (Convenzioni di Ginevra), il Codice di Condotta militare e le basi tecniche di sopravvivenza. Destinato a tutto il personale potenzialmente esposto al rischio.</div>
+        </div>
+        <div class="level-card">
+          <span class="level-badge lvl-bravo">Livello Bravo</span>
+          <div class="level-title">Addestramento Pratico Standard</div>
+          <div class="level-text">Integra la teoria con esercitazioni pratiche. Tecniche di sopravvivenza sul campo, esercizi di evasione, procedure di segnalazione e recupero. Durata tipica: 3-4 giorni in ambiente controllato. Destinato principalmente a equipaggi di volo.</div>
+        </div>
+        <div class="level-card">
+          <span class="level-badge lvl-charlie">Livello Charlie</span>
+          <div class="level-title">Addestramento Avanzato Completo</div>
+          <div class="level-text">La versione più intensa. Simulazione realistica di una settimana con sopravvivenza, evasione, cattura simulata e resistenza. Massimo stress fisico e psicologico. Supervisione medica e psicologica continua. Riservato a personale selezionato con specifici profili operativi.</div>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="card" style="margin-bottom:1.5rem;">
+          <p class="label" style="margin-bottom:.8rem;">Destinatari del corso</p>
+          <ul style="display:flex; flex-direction:column; gap:.6rem;">
+            <li style="font-size:.88rem; color:#c8d4e3; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">▶</span> Piloti e copiloti AVES (tutti i livelli)</li>
+            <li style="font-size:.88rem; color:#c8d4e3; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">▶</span> Specialisti di bordo (livello Bravo)</li>
+            <li style="font-size:.88rem; color:#c8d4e3; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">▶</span> Personale destinato a teatro operativo</li>
+            <li style="font-size:.88rem; color:#c8d4e3; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">▶</span> Cavalieri paracadutisti e reparti speciali</li>
+            <li style="font-size:.88rem; color:#c8d4e3; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--gold);">▶</span> Personale di nazioni alleate NATO</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="label" style="margin-bottom:.6rem;">Dottrina NATO di riferimento</p>
+          <p style="font-size:.86rem; color:#8b9ab0; line-height:1.75;">Il corso SERE del CAAE è sviluppato in conformità alla dottrina NATO di <strong style="color:#fff">Personnel Recovery (PR)</strong>, che regola le procedure di ricerca, localizzazione e recupero del personale militare isolato, catturato o evaso in territorio ostile.</p>
+          <p style="font-size:.86rem; color:#8b9ab0; line-height:1.75; margin-top:.7rem;">La formazione SERE è parte integrante degli standard operativi dell'Alleanza Atlantica e abilita il personale a operare efficacemente nel pieno rispetto delle Convenzioni di Ginevra e del diritto internazionale umanitario.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="detail-section" style="background:rgba(201,162,39,.05); border-top:1px solid rgba(201,162,39,.15);">
+  <div class="container" style="text-align:center;" data-aos="fade-up">
+    <p class="label">Altri corsi CAAE</p>
+    <div class="divider"></div>
+    <h2 class="section-heading" style="margin-bottom:1.5rem;">Esplora le altre attività</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+      <a href="piloti.html" class="btn btn-outline">Corsi Piloti →</a>
+      <a href="specialisti.html" class="btn btn-outline">Specialisti →</a>
+      <a href="medevac.html" class="btn btn-gold">MEDEVAC →</a>
+    </div>
+    <div style="margin-top:2rem;">
+      <a href="../index.html#attivita" class="back-btn">← Torna alle attività</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Distintivo_del_Comando_Aviazione_dell%27Esercito.png" alt="Logo AVES">
+    <span>Centro Addestrativo Aviazione dell'Esercito</span>
+  </div>
+  <nav class="footer-links" aria-label="Link footer">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#attivita">Corsi</a>
+    <a href="../index.html#flotta">Flotta</a>
+    <a href="../bandiera.html">Bandiera</a>
+    <a href="../storia.html">Storia</a>
+  </nav>
+  <p class="footer-copy">
+    Sito non ufficiale a scopo informativo · Realizzato dal <strong style="color:var(--gold)">Cap. ing. (AVES) RN Gianmarco ARDIA</strong>
+  </p>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna su">↑</button>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ once:true, duration:750, easing:'ease-out-cubic', offset:50 });
+  const nav = document.getElementById('navbar');
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    btt.classList.toggle('show', window.scrollY > 400);
+  }, { passive:true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose  = document.getElementById('menuClose');
+  function openMenu() { hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); mobileMenu.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMenu() { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('open'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', () => mobileMenu.classList.contains('open') ? closeMenu() : openMenu());
+  menuClose.addEventListener('click', closeMenu);
+  mobileMenu.addEventListener('click', e => { if(e.target === mobileMenu) closeMenu(); });
+</script>
+</body>
+</html>

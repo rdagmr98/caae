@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Leonardo UH-169D – LUH 196 D dell'Aviazione dell'Esercito. Scheda tecnica, foto e capacità operative. Prima consegna aprile 2025.">
+  <title>LUH 196 D – UH-169D | CAAE Viterbo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+    .chip-row { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+    .chip { display:inline-flex; align-items:center; gap:.4rem; padding:.4rem .9rem; border-radius:20px; font-size:.8rem; font-family:'Rajdhani',sans-serif; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+    .chip-gold { background:rgba(201,162,39,.15); color:var(--gold); border:1px solid rgba(201,162,39,.3); }
+    .chip-blue { background:rgba(30,110,220,.15); color:#6eb3ff; border:1px solid rgba(30,110,220,.3); }
+    .chip-green { background:rgba(30,160,60,.15); color:#6fdf80; border:1px solid rgba(30,160,60,.3); }
+    .callout { background:rgba(201,162,39,.07); border-left:3px solid var(--gold); border-radius:0 var(--radius) var(--radius) 0; padding:1.2rem 1.5rem; margin:1.5rem 0; }
+    .callout p { font-size:.92rem; color:#c8d4e3; line-height:1.75; font-style:italic; }
+    .back-btn { display:inline-flex; align-items:center; gap:.5rem; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.88rem; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); transition:gap var(--tr); }
+    .back-btn:hover { gap:.9rem; color:var(--gold2); }
+    .detail-section { padding: 4.5rem 1.5rem; }
+    .detail-section:nth-child(even) { background: rgba(255,255,255,.02); }
+    .nav-sub-links { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:2rem; justify-content:center; }
+    .nav-sub-links a { font-family:'Rajdhani',sans-serif; font-size:.82rem; font-weight:600; color:var(--gray); letter-spacing:.06em; text-transform:uppercase; padding:.4rem .9rem; border:1px solid rgba(255,255,255,.1); border-radius:6px; transition:var(--tr); }
+    .nav-sub-links a:hover, .nav-sub-links a.active { border-color:var(--gold); color:var(--gold); background:rgba(201,162,39,.07); }
+    .role-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-top:1.5rem; }
+    .role-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:1.2rem; text-align:center; transition:var(--tr); }
+    .role-card:hover { border-color:rgba(201,162,39,.3); background:rgba(201,162,39,.04); }
+    .role-icon { font-size:2rem; margin-bottom:.6rem; display:block; }
+    .role-name { font-family:'Rajdhani',sans-serif; font-size:1rem; font-weight:700; color:#fff; }
+  </style>
+</head>
+<body>
+
+<div id="dynamic-bg">
+  <div class="bg-layer active" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/1280px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg'); filter:brightness(.2) saturate(.6) hue-rotate(20deg);"></div>
+</div>
+<div class="bg-overlay"></div>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/CoA_mil_ITA_centro_aves.png" alt="Stemma CAAE">
+    <span>CAAE · Viterbo</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#about">Chi Siamo</a></li>
+    <li><a href="../index.html#storia">Storia</a></li>
+    <li><a href="../index.html#attivita">Attività</a></li>
+    <li><a href="../index.html#flotta">Flotta</a></li>
+    <li><a href="../index.html#bandiera">Bandiera</a></li>
+    <li><a href="../index.html#contatti">Contatti</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" role="button" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu principale">
+  <button class="mobile-close" id="menuClose" aria-label="Chiudi menu">✕</button>
+  <a href="../index.html#about" onclick="closeMenu()">Chi Siamo</a>
+  <a href="../index.html#storia" onclick="closeMenu()">Storia</a>
+  <a href="../index.html#attivita" onclick="closeMenu()">Attività</a>
+  <a href="../index.html#flotta" onclick="closeMenu()">Flotta</a>
+  <a href="../index.html#bandiera" onclick="closeMenu()">Bandiera</a>
+  <a href="../index.html#contatti" onclick="closeMenu()">Contatti</a>
+</div>
+
+<!-- HERO -->
+<div class="sub-hero">
+  <div class="sub-hero-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/1280px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg'); filter:brightness(.35) saturate(.7) hue-rotate(20deg);"></div>
+  <div class="sub-hero-overlay"></div>
+  <div class="sub-hero-content">
+    <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="../index.html#flotta">Flotta</a> › LUH 196 D</p>
+    <h1>LUH 196 D</h1>
+    <p>Leonardo UH-169D – L'elicottero multiruolo operativo di nuova generazione</p>
+    <div class="chip-row" style="justify-content:center; margin-top:1rem;">
+      <span class="chip chip-green">Nuovo · Prima consegna 2025</span>
+      <span class="chip chip-gold">Multiruolo</span>
+      <span class="chip chip-blue">MEDEVAC Ready</span>
+    </div>
+  </div>
+</div>
+
+<!-- FLEET NAV -->
+<div style="background:rgba(10,22,40,.9); border-bottom:1px solid rgba(255,255,255,.06); padding:.9rem 1.5rem;">
+  <div class="container">
+    <div class="nav-sub-links">
+      <a href="luh196b.html">LUH 196 B</a>
+      <a href="luh196d.html" class="active">LUH 196 D</a>
+      <a href="ab205.html">AB 205</a>
+      <a href="ab206.html">AB 206</a>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="detail-section">
+  <div class="container">
+    <div class="content-grid">
+      <div class="sticky-img" data-aos="fade-right">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/960px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg" alt="AW169M - base del LUH 196D" style="filter:hue-rotate(20deg) brightness(1.05);">
+        <p style="font-size:.72rem; color:var(--gray); margin-top:.5rem;">AW169M – piattaforma base del LUH 196 D · © Alan Wilson (CC BY-SA 2.0)</p>
+      </div>
+      <div data-aos="fade-left">
+        <p class="label">Leonardo AW169M · variante D – LUH operativo</p>
+        <div class="divider" style="margin:.7rem 0 1.2rem;"></div>
+        <h2 class="section-heading" style="margin-bottom:1.2rem;">La nuova era<br>dell'<span class="gold">AVES operativo</span></h2>
+        <p class="body-text">Il <strong style="color:#fff">Leonardo UH-169D</strong> (designazione militare <strong style="color:var(--gold)">LUH 196 D</strong>) è la variante multiruolo operativa dell'AW169M, progettata per sostituire progressivamente i vetusti AB-206, AB-205, AB-212, AB-412 e A109 nelle missioni operative dell'Esercito Italiano. Il primo esemplare è stato consegnato ufficialmente nel <strong style="color:#fff">aprile 2025</strong>.</p>
+        <p class="body-text" style="margin-top:1rem;">Il programma LUH prevede l'acquisizione di <strong style="color:#fff">25 esemplari</strong> in configurazione operativa entro il 2027, consentendo la piena standardizzazione della flotta leggera dell'AVES su un'unica piattaforma moderna con logistica condivisa, riduzione dei costi operativi e massima interoperabilità con altri corpi dello Stato (Carabinieri, Guardia di Finanza) che operano la stessa piattaforma.</p>
+        <div class="callout">
+          <p>"Il primo UH-169D consegnato all'Aviazione dell'Esercito rappresenta l'avvio di una nuova era per la flotta leggera multiruolo dell'AVES, con capacità operative superiori e una logistica condivisa con gli altri corpi dello Stato." — <em>Analisi Difesa, aprile 2025</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPECS -->
+<div class="detail-section">
+  <div class="container">
+    <div data-aos="fade-up" style="text-align:center; margin-bottom:2.5rem;">
+      <p class="label">Scheda tecnica</p>
+      <div class="divider"></div>
+      <h2 class="section-heading">Caratteristiche principali</h2>
+    </div>
+    <div class="content-grid" data-aos="fade-up">
+      <div>
+        <table class="specs-table">
+          <tr><th colspan="2">Dati generali</th></tr>
+          <tr><td>Designazione militare</td><td>LUH 196 D</td></tr>
+          <tr><td>Tipo</td><td>Elicottero leggero multiruolo operativo</td></tr>
+          <tr><td>Produttore</td><td>Leonardo Helicopters (Vergiate, VA)</td></tr>
+          <tr><td>Prima consegna AVES</td><td>Aprile 2025</td></tr>
+          <tr><td>Ordine totale</td><td>25 esemplari</td></tr>
+          <tr><th colspan="2">Prestazioni</th></tr>
+          <tr><td>Velocità di crociera</td><td>260 km/h</td></tr>
+          <tr><td>Velocità massima</td><td>306 km/h</td></tr>
+          <tr><td>Autonomia</td><td>&gt; 800 km (con serbatoi aux.)</td></tr>
+          <tr><td>Autonomia oraria</td><td>4+ ore</td></tr>
+          <tr><td>Quota operativa</td><td>6.100 m</td></tr>
+        </table>
+      </div>
+      <div>
+        <table class="specs-table">
+          <tr><th colspan="2">Struttura e propulsione</th></tr>
+          <tr><td>Motori</td><td>2× Pratt &amp; Whitney PW210A</td></tr>
+          <tr><td>Potenza</td><td>1.000 shp ciascuno</td></tr>
+          <tr><td>Carrello</td><td>Pattini fissi (var. D operativa)</td></tr>
+          <tr><td>Peso max decollo</td><td>≈ 4.800 kg</td></tr>
+          <tr><th colspan="2">Sistemi e capacità</th></tr>
+          <tr><td>Cockpit</td><td>Glass cockpit digitale avanzato</td></tr>
+          <tr><td>NVG</td><td>Compatibile (full NVG cabin)</td></tr>
+          <tr><td>Mission system</td><td>C4ISR, data link, IFF, radio criptate</td></tr>
+          <tr><td>Config. MEDEVAC</td><td>Multiple barelle + personale sanitario</td></tr>
+          <tr><td>Capacità trasporto</td><td>10 militari equipaggiati</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RUOLI -->
+<div class="detail-section">
+  <div class="container">
+    <div data-aos="fade-up" style="text-align:center; margin-bottom:2rem;">
+      <p class="label">Missioni operative</p>
+      <div class="divider"></div>
+      <h2 class="section-heading">Capacità multiruolo</h2>
+    </div>
+    <div class="role-grid" data-aos="fade-up">
+      <div class="role-card">
+        <span class="role-icon">🚁</span>
+        <div class="role-name">Trasporto Utility</div>
+        <p style="font-size:.82rem; color:var(--gray); margin-top:.5rem; line-height:1.6;">Trasporto truppe, personale e materiali in teatro operativo</p>
+      </div>
+      <div class="role-card">
+        <span class="role-icon">🏥</span>
+        <div class="role-name">MEDEVAC / CASEVAC</div>
+        <p style="font-size:.82rem; color:var(--gray); margin-top:.5rem; line-height:1.6;">Evacuazione medica avanzata e trasporto feriti gravi</p>
+      </div>
+      <div class="role-card">
+        <span class="role-icon">🔭</span>
+        <div class="role-name">Ricognizione</div>
+        <p style="font-size:.82rem; color:var(--gray); margin-top:.5rem; line-height:1.6;">Osservazione, sorveglianza e raccolta intelligence</p>
+      </div>
+      <div class="role-card">
+        <span class="role-icon">🆘</span>
+        <div class="role-name">SAR / Protezione Civile</div>
+        <p style="font-size:.82rem; color:var(--gray); margin-top:.5rem; line-height:1.6;">Search &amp; rescue e supporto in emergenze nazionali</p>
+      </div>
+      <div class="role-card">
+        <span class="role-icon">🔒</span>
+        <div class="role-name">Ordine Pubblico</div>
+        <p style="font-size:.82rem; color:var(--gray); margin-top:.5rem; line-height:1.6;">Supporto a Carabinieri, Guardia di Finanza (piattaforma comune)</p>
+      </div>
+      <div class="role-card">
+        <span class="role-icon">🌙</span>
+        <div class="role-name">Operazioni Notturne</div>
+        <p style="font-size:.82rem; color:var(--gray); margin-top:.5rem; line-height:1.6;">Operazioni con NVG e sistemi ottici/IR di bordo</p>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:2rem;" data-aos="fade-up">
+      <p>Il UH-169D permetterà la piena standardizzazione logistica con le flotte AW169 di Arma dei Carabinieri e Guardia di Finanza, generando forti sinergie operative e una drastica riduzione dei costi di mantenimento della flotta leggera delle Forze Armate e dei Corpi dello Stato.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="detail-section" style="background:rgba(201,162,39,.05); border-top:1px solid rgba(201,162,39,.15);">
+  <div class="container" style="text-align:center;" data-aos="fade-up">
+    <p class="label">Flotta CAAE</p>
+    <div class="divider"></div>
+    <h2 class="section-heading" style="margin-bottom:1.5rem;">Esplora gli altri aeromobili</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+      <a href="luh196b.html" class="btn btn-outline">LUH 196 B →</a>
+      <a href="ab205.html" class="btn btn-outline">AB 205 →</a>
+      <a href="ab206.html" class="btn btn-outline">AB 206 →</a>
+    </div>
+    <div style="margin-top:2rem;">
+      <a href="../index.html#flotta" class="back-btn">← Torna alla flotta</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Distintivo_del_Comando_Aviazione_dell%27Esercito.png" alt="Logo AVES">
+    <span>Centro Addestrativo Aviazione dell'Esercito</span>
+  </div>
+  <nav class="footer-links" aria-label="Link footer">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#attivita">Corsi</a>
+    <a href="../index.html#flotta">Flotta</a>
+    <a href="../bandiera.html">Bandiera</a>
+    <a href="../storia.html">Storia</a>
+  </nav>
+  <p class="footer-copy">
+    Sito non ufficiale a scopo informativo · Realizzato dal <strong style="color:var(--gold)">Cap. ing. (AVES) RN Gianmarco ARDIA</strong>
+  </p>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna su">↑</button>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ once:true, duration:750, easing:'ease-out-cubic', offset:50 });
+  const nav = document.getElementById('navbar');
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    btt.classList.toggle('show', window.scrollY > 400);
+  }, { passive:true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose  = document.getElementById('menuClose');
+  function openMenu() { hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); mobileMenu.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMenu() { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('open'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', () => mobileMenu.classList.contains('open') ? closeMenu() : openMenu());
+  menuClose.addEventListener('click', closeMenu);
+  mobileMenu.addEventListener('click', e => { if(e.target === mobileMenu) closeMenu(); });
+</script>
+</body>
+</html>
