@@ -234,6 +234,32 @@
   .map-wrap{border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.08)}
   .map-wrap iframe{width:100%;height:340px;border:none;filter:grayscale(.5) invert(.9) hue-rotate(200deg)}
 
+  /* ═══ ORE DI VOLO COUNTER ═══ */
+  #ore-volo{background:transparent;padding:2.5rem 0}
+  .ore-counter-wrap{
+    background:linear-gradient(135deg,rgba(201,162,39,.08) 0%,rgba(10,22,40,.97) 50%,rgba(201,162,39,.05) 100%);
+    border:1px solid rgba(201,162,39,.3);border-radius:var(--radius);
+    padding:3rem 2rem;text-align:center;position:relative;overflow:hidden;
+  }
+  .ore-counter-wrap::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 50%,rgba(201,162,39,.07) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .ore-label-top{font-size:.75rem;letter-spacing:.2em;color:var(--gray);text-transform:uppercase;margin-bottom:1rem}
+  .ore-number{
+    font-family:'Rajdhani',sans-serif;font-size:clamp(3.5rem,10vw,7rem);font-weight:700;
+    color:var(--gold);line-height:1;display:block;
+    text-shadow:0 0 40px rgba(201,162,39,.45);
+  }
+  .ore-label-main{font-family:'Rajdhani',sans-serif;font-size:1.15rem;font-weight:600;letter-spacing:.28em;color:#fff;text-transform:uppercase;margin-top:.35rem}
+  .ore-progress-wrap{margin:2rem auto 0;max-width:640px}
+  .ore-progress-bar{height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;margin-bottom:.75rem}
+  .ore-progress-fill{height:100%;width:0;background:linear-gradient(to right,#9b7b1e,var(--gold));border-radius:3px;transition:width 2.8s cubic-bezier(.25,.8,.25,1)}
+  .ore-progress-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--gray);letter-spacing:.04em}
+  .ore-milestone{color:var(--gold);font-weight:700;letter-spacing:.12em;font-family:'Rajdhani',sans-serif;font-size:.82rem}
+  .ore-note{font-size:.72rem;color:var(--gray);margin-top:1.5rem;letter-spacing:.06em}
+
   /* ═══ MOBILE RESPONSIVE ═══ */
   @media(max-width:900px){
     .about-grid,.bandiera-grid,.contact-grid{grid-template-columns:1fr}
@@ -262,13 +288,13 @@
 
 <!-- ═══ DYNAMIC BACKGROUNDS ═══ -->
 <div id="dynamic-bg">
-  <div class="bg-layer active" id="bg-hero"   style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg/1280px-Italian_Army_Agusta-Bell_AB-212_%28ISAF%29.jpg')"></div>
-  <div class="bg-layer"        id="bg-about"  style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Italian_Army_Aviation_AB_205_helicopter.png/1280px-Italian_Army_Aviation_AB_205_helicopter.png')"></div>
-  <div class="bg-layer"        id="bg-storia" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mangusta_Iraq.jpg/1280px-Mangusta_Iraq.jpg')"></div>
-  <div class="bg-layer"        id="bg-attivita" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg/1280px-Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg')"></div>
-  <div class="bg-layer"        id="bg-flotta" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/1280px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg')"></div>
-  <div class="bg-layer"        id="bg-bandiera" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg/1280px-Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg')"></div>
-  <div class="bg-layer"        id="bg-contatti" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg/1280px-Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg')"></div>
+  <div class="bg-layer active" id="bg-hero"   style="background-image:url('imgs/luh169b_ceremony.jpg')"></div>
+  <div class="bg-layer"        id="bg-about"  style="background-image:url('imgs/luh169b_ceremony.jpg')"></div>
+  <div class="bg-layer"        id="bg-storia" style="background-image:url('imgs/luh169_bg.jpg')"></div>
+  <div class="bg-layer"        id="bg-attivita" style="background-image:url('imgs/ab205_caae.jpg')"></div>
+  <div class="bg-layer"        id="bg-flotta" style="background-image:url('imgs/luh169b_caae.jpg')"></div>
+  <div class="bg-layer"        id="bg-bandiera" style="background-image:url('imgs/luh169b_ceremony2.jpg')"></div>
+  <div class="bg-layer"        id="bg-contatti" style="background-image:url('imgs/ab206_caae.jpg')"></div>
 </div>
 <div class="bg-overlay"></div>
 
@@ -330,10 +356,10 @@
     <div class="about-grid">
       <div data-aos="fade-right" data-aos-duration="800">
         <div class="about-img-wrap">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Italian_Army_Aviation_AB_205_helicopter.png/960px-Italian_Army_Aviation_AB_205_helicopter.png"
-               alt="AB-205 AVES in volo" loading="lazy">
+          <img src="imgs/luh169b_ceremony.jpg"
+               alt="UH-169B CAAE Viterbo – cerimonia del primo volo" loading="lazy">
         </div>
-        <p class="about-img-caption">AB-205 dell'Aviazione dell'Esercito · © Esercito Italiano (CC BY 2.5)</p>
+        <p class="about-img-caption">UH-169B del CAAE · Aeroporto "T. Fabbri" di Viterbo LIRV · © Esercito Italiano</p>
       </div>
       <div data-aos="fade-left" data-aos-duration="800" class="about-text">
         <p class="label">Chi siamo</p>
@@ -347,10 +373,11 @@
         </p>
         <p class="body-text" style="margin-top:1rem;">
           Fondato il <strong style="color:#fff">10 maggio 1951</strong>, il Centro forma piloti e specialisti
-          per i reparti di volo dell'Esercito Italiano e di nazioni alleate, essendo riconosciuto come
-          centro di eccellenza nazionale e internazionale. Impegno addestrativo e operativo si fondono
-          in un'istituzione che porta con orgoglio il <strong style="color:var(--gold)">Basco Azzurro</strong>
-          dal 1971.
+          per i reparti di volo dell'Esercito Italiano e di nazioni alleate. Cuore operativo del CAAE è il
+          <strong style="color:var(--gold)">1° Gruppo Squadroni "AURIGA"</strong>, costituito il 1° ottobre 1997,
+          che produce oltre <strong style="color:#fff">4.000 ore di volo l'anno</strong> su RH‑206C, UH‑205A e UH‑169B/D.
+          Il Centro dispone inoltre di un <strong style="color:#fff">Full Flight Simulator</strong> per l'AH‑129D Mangusta,
+          portando il totale addestrativo annuo a oltre 3.100 ore reali più 900 ore di simulatore.
         </p>
         <div class="stats-row">
           <div class="stat-box">
@@ -358,7 +385,7 @@
             <div class="stat-label">Anno fondazione</div>
           </div>
           <div class="stat-box">
-            <div class="stat-num" data-count="73">73+</div>
+            <div class="stat-num" id="anniCount">74</div>
             <div class="stat-label">Anni di storia</div>
           </div>
           <div class="stat-box">
@@ -366,11 +393,33 @@
             <div class="stat-label">Onorificenze</div>
           </div>
           <div class="stat-box">
-            <div class="stat-num">4+</div>
-            <div class="stat-label">Tipi aeromobili</div>
+            <div class="stat-num">4.000+</div>
+            <div class="stat-label">Ore volo / anno</div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ORE DI VOLO ═══ -->
+<section id="ore-volo">
+  <div class="container">
+    <div class="ore-counter-wrap" data-aos="zoom-in" data-aos-duration="900">
+      <div class="ore-label-top">Ore di volo prodotte dalla fondazione nel 1951</div>
+      <span class="ore-number" id="oreCounter">0</span>
+      <div class="ore-label-main">Ore di Volo</div>
+      <div class="ore-progress-wrap">
+        <div class="ore-progress-bar">
+          <div class="ore-progress-fill" id="oreProgressBar"></div>
+        </div>
+        <div class="ore-progress-labels">
+          <span>0</span>
+          <span class="ore-milestone">🎯 ROAD TO 1.000.000</span>
+          <span>1.000.000</span>
+        </div>
+      </div>
+      <p class="ore-note">Fonte: dati ufficiali CAAE · aggiornamento 2025</p>
     </div>
   </div>
 </section>
@@ -411,8 +460,8 @@
         <div class="tl-content tl-right">
           <span class="tl-tag">Scuola autonoma</span>
           <div class="tl-year">1957</div>
-          <div class="tl-title">CAALE – Scuola autonoma</div>
-          <p class="tl-text">Assume la denominazione di Centro Addestramento ALE e diventa Scuola autonoma. Entrano in servizio i primi elicotteri.</p>
+          <div class="tl-title">CAALE – Istituto autonomo</div>
+          <p class="tl-text">1° giugno: assume la denominazione di Centro Addestramento ALE (CAALE) e diventa Istituto di Specializzazione per Piloti ALE. Entrano in servizio i primi elicotteri.</p>
         </div>
       </div>
 
@@ -422,7 +471,7 @@
           <span class="tl-tag">Viterbo</span>
           <div class="tl-year">1958</div>
           <div class="tl-title">Viterbo: la casa definitiva</div>
-          <p class="tl-text">Trasferimento definitivo nella Caserma "Ten. M.O. Dante Chelotti". Il 14 maggio viene consegnata la Bandiera di Istituto.</p>
+          <p class="tl-text">Trasferimento nella Caserma "Ten. M.O.V.M. Dante Chelotti" a Viterbo. La Bandiera di Istituto viene consegnata al Centro, avviando una tradizione di eccellenza.</p>
         </div>
         <div class="tl-dot tl-center"></div>
         <div class="tl-right"></div>
@@ -436,17 +485,41 @@
           <span class="tl-tag">Identità</span>
           <div class="tl-year">1971</div>
           <div class="tl-title">Il Basco Azzurro</div>
-          <p class="tl-text">Nel ventennale, il Capo di SME consegna il Basco Azzurro a tutto il personale dell'ALE. Simbolo identitario tutt'oggi portato con orgoglio.</p>
+          <p class="tl-text">20 maggio, nel ventennale, il Capo di SME consegna il Basco Azzurro a tutto il personale dell'ALE. Simbolo identitario tutt'oggi portato con orgoglio dal personale AVES.</p>
         </div>
       </div>
 
-      <!-- 1993 -->
+      <!-- 1997 -->
       <div class="tl-item" data-aos="fade-right">
         <div class="tl-content tl-left">
-          <span class="tl-tag">Eccellenza</span>
-          <div class="tl-year">1993</div>
-          <div class="tl-title">Nasce l'AVES</div>
-          <p class="tl-text">La Specialità assume la denominazione AVES. La Bandiera è insignita della Medaglia d'Oro al Valore dell'Esercito per le missioni internazionali di pace.</p>
+          <span class="tl-tag">1° Gruppo "AURIGA"</span>
+          <div class="tl-year">1997</div>
+          <div class="tl-title">Nasce il 1° Gruppo Squadroni</div>
+          <p class="tl-text">1° ottobre: viene costituito il 1° Gruppo Squadroni <strong style="color:var(--gold)">"AURIGA"</strong>, cuore operativo del CAAE. Produce oltre 4.000 ore di volo l'anno su RH-206C, UH-205A e UH-169B/D.</p>
+        </div>
+        <div class="tl-dot tl-center"></div>
+        <div class="tl-right"></div>
+      </div>
+
+      <!-- 2003 -->
+      <div class="tl-item" data-aos="fade-left">
+        <div class="tl-left"></div>
+        <div class="tl-dot tl-center"></div>
+        <div class="tl-content tl-right">
+          <span class="tl-tag">AVES</span>
+          <div class="tl-year">2003</div>
+          <div class="tl-title">Nasce l'Aviazione dell'Esercito</div>
+          <p class="tl-text">Novembre: viene ufficialmente istituita l'<strong style="color:var(--gold)">Aviazione dell'Esercito (AVES)</strong> come specialità autonoma dell'Esercito Italiano, con il CAAE come suo polo formativo principale.</p>
+        </div>
+      </div>
+
+      <!-- 2004 -->
+      <div class="tl-item" data-aos="fade-right">
+        <div class="tl-content tl-left">
+          <span class="tl-tag">Nome attuale</span>
+          <div class="tl-year">2004</div>
+          <div class="tl-title">Centro Addestrativo Aviazione dell'Esercito</div>
+          <p class="tl-text">1° giugno: assume la denominazione definitiva di <strong style="color:var(--gold)">CAAE</strong>. Il Centro si consolida come eccellenza di formazione per piloti e specialisti italiani e alleati.</p>
         </div>
         <div class="tl-dot tl-center"></div>
         <div class="tl-right"></div>
@@ -459,8 +532,8 @@
         <div class="tl-content tl-right">
           <span class="tl-tag">Oggi</span>
           <div class="tl-year">2025</div>
-          <div class="tl-title">Il LUH AW169 entra in servizio</div>
-          <p class="tl-text">Consegna dei primi Leonardo UH-169D (LUH 196). Nuova era per il CAAE che aggiorna la flotta con tecnologie all'avanguardia.</p>
+          <div class="tl-title">UH-169D: nuova era</div>
+          <p class="tl-text">Consegna dei primi Leonardo UH-169D (LUH 196D). Il CAAE raggiunge quasi <strong style="color:var(--gold)">1.000.000 di ore di volo</strong> dalla fondazione e si proietta verso le nuove sfide della formazione aeronautica militare.</p>
         </div>
       </div>
 
@@ -557,8 +630,8 @@
 
       <a href="flotta/luh196b.html" class="heli-card" data-aos="fade-up" data-aos-delay="0">
         <div class="heli-img-wrap">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/960px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg"
-               alt="LUH 196 B" loading="lazy">
+          <img src="imgs/luh169b_caae.jpg"
+               alt="UH-169B CAAE EI-108 Viterbo" loading="lazy">
           <div class="heli-img-overlay"></div>
           <span class="heli-badge badge-active">IN SERVIZIO</span>
         </div>
@@ -577,7 +650,7 @@
 
       <a href="flotta/luh196d.html" class="heli-card" data-aos="fade-up" data-aos-delay="100">
         <div class="heli-img-wrap">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg/1280px-Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg"
+          <img src="imgs/luh169_bg.jpg"
                alt="LUH 196 D"
                loading="lazy">
           <div class="heli-img-overlay"></div>
@@ -598,8 +671,8 @@
 
       <a href="flotta/ab205.html" class="heli-card" data-aos="fade-up" data-aos-delay="200">
         <div class="heli-img-wrap">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Italian_Army_Aviation_AB_205_helicopter.png/960px-Italian_Army_Aviation_AB_205_helicopter.png"
-               alt="AB-205" loading="lazy">
+          <img src="imgs/ab205_caae.jpg"
+               alt="AB-205 CAAE" loading="lazy">
           <div class="heli-img-overlay"></div>
           <span class="heli-badge badge-legacy">STORICO</span>
         </div>
@@ -618,8 +691,8 @@
 
       <a href="flotta/ab206.html" class="heli-card" data-aos="fade-up" data-aos-delay="300">
         <div class="heli-img-wrap">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg/960px-Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg"
-               alt="AB-206 a Viterbo" loading="lazy">
+          <img src="imgs/ab206_caae.jpg"
+               alt="AB-206 CAAE EI-578 Viterbo" loading="lazy">
           <div class="heli-img-overlay"></div>
           <span class="heli-badge badge-legacy">STORICO</span>
         </div>
@@ -765,7 +838,7 @@
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-logo">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Distintivo_del_Comando_Aviazione_dell%27Esercito.png" alt="Logo AVES">
+    <img src="stemma_caae.png" alt="Logo AVES">
     <span>Centro Addestrativo Aviazione dell'Esercito</span>
   </div>
   <nav class="footer-links" aria-label="Link footer">
@@ -792,13 +865,14 @@
 
   // Dynamic background switcher
   const bgMap = {
-    hero:    'bg-hero',
-    about:   'bg-about',
-    storia:  'bg-storia',
-    attivita:'bg-attivita',
-    flotta:  'bg-flotta',
-    bandiera:'bg-bandiera',
-    contatti:'bg-contatti',
+    hero:      'bg-hero',
+    about:     'bg-about',
+    'ore-volo':'bg-about',
+    storia:    'bg-storia',
+    attivita:  'bg-attivita',
+    flotta:    'bg-flotta',
+    bandiera:  'bg-bandiera',
+    contatti:  'bg-contatti',
   };
   let activeBg = 'bg-hero';
   function switchBg(id) {
@@ -845,7 +919,7 @@
   menuClose.addEventListener('click', closeMenu);
   mobileMenu.addEventListener('click', e => { if(e.target === mobileMenu) closeMenu(); });
 
-  // Counter animation
+  // Counter animation (stat boxes)
   const counters = document.querySelectorAll('.stat-num[data-count]');
   const cObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -868,6 +942,37 @@
     });
   }, { threshold: 0.5 });
   counters.forEach(el => cObs.observe(el));
+
+  // Anni di storia (computed dinamicamente)
+  const anniEl = document.getElementById('anniCount');
+  if(anniEl) anniEl.textContent = (new Date().getFullYear() - 1951) + '+';
+
+  // Ore di volo animated counter
+  const oreEl  = document.getElementById('oreCounter');
+  const oreBar = document.getElementById('oreProgressBar');
+  const ORE_TARGET = 946000;
+  if(oreEl) {
+    const oreObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(!e.isIntersecting) return;
+        let t0 = null;
+        const dur = 2800;
+        function stepOre(ts) {
+          if(!t0) t0 = ts;
+          const p = Math.min((ts - t0) / dur, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          const val = Math.floor(ease * ORE_TARGET);
+          oreEl.textContent = val.toLocaleString('it-IT');
+          if(p < 1) requestAnimationFrame(stepOre);
+          else oreEl.textContent = ORE_TARGET.toLocaleString('it-IT');
+        }
+        requestAnimationFrame(stepOre);
+        if(oreBar) setTimeout(() => { oreBar.style.width = '94.6%'; }, 400);
+        oreObs.unobserve(e.target);
+      });
+    }, { threshold: 0.3 });
+    oreObs.observe(document.getElementById('ore-volo'));
+  }
 </script>
 </body>
 </html>
