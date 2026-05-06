@@ -237,13 +237,13 @@
   /* ═══ MOBILE RESPONSIVE ═══ */
   @media(max-width:900px){
     .about-grid,.bandiera-grid,.contact-grid{grid-template-columns:1fr}
-    .timeline::before{left:7px}
-    .tl-item{grid-template-columns:16px 1fr!important;gap:1rem!important}
-    .tl-item .tl-right,.tl-item .tl-left{display:none!important}
-    .tl-item:nth-child(odd)  .tl-center,
-    .tl-item:nth-child(even) .tl-center{grid-column:2!important}
-    .tl-dot{grid-column:1!important;margin-top:.4rem}
-    .tl-item:nth-child(odd) .tl-content{text-align:left!important}
+    .timeline::before{left:10px}
+    .tl-item{grid-template-columns:24px 1fr!important;gap:1rem!important}
+    /* Place dot in col 1, content in col 2 – DON'T hide content divs */
+    .tl-dot{grid-column:1!important;grid-row:1!important;margin-top:.4rem}
+    .tl-item .tl-content{grid-column:2!important;grid-row:1!important;text-align:left!important;opacity:1!important;pointer-events:auto!important}
+    /* Hide only truly empty placeholder divs (no tl-content class) */
+    .tl-item>.tl-left:not(.tl-content),.tl-item>.tl-right:not(.tl-content){display:none!important}
     .about-img-wrap img{height:260px}
     .bandiera-img-wrap{margin-bottom:1.5rem}
   }
@@ -267,7 +267,7 @@
   <div class="bg-layer"        id="bg-storia" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mangusta_Iraq.jpg/1280px-Mangusta_Iraq.jpg')"></div>
   <div class="bg-layer"        id="bg-attivita" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg/1280px-Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg')"></div>
   <div class="bg-layer"        id="bg-flotta" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/1280px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg')"></div>
-  <div class="bg-layer"        id="bg-bandiera" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Italian_Army_Boeing_%28Elicotteri_Meridionali%29_CH-47C_Chinook_%28219%29_Bidini-1.jpg/1280px-Italian_Army_Boeing_%28Elicotteri_Meridionali%29_CH-47C_Chinook_%28219%29_Bidini-1.jpg')"></div>
+  <div class="bg-layer"        id="bg-bandiera" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg/1280px-Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg')"></div>
   <div class="bg-layer"        id="bg-contatti" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg/1280px-Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg')"></div>
 </div>
 <div class="bg-overlay"></div>
@@ -275,7 +275,7 @@
 <!-- ═══ NAV ═══ -->
 <nav id="navbar">
   <a href="#hero" class="nav-brand">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/CoA_mil_ITA_centro_aves.png" alt="Stemma CAAE">
+    <img src="stemma_caae.png" alt="Stemma CAAE">
     <span>CAAE · Viterbo</span>
   </a>
   <ul class="nav-links">
@@ -309,7 +309,7 @@
   <div class="radar radar-3"></div>
   <div class="hero-content">
     <p class="label hero-eyebrow">Aviazione dell'Esercito Italiano &nbsp;·&nbsp; Viterbo</p>
-    <img class="hero-logo" src="https://upload.wikimedia.org/wikipedia/commons/5/58/CoA_mil_ITA_centro_aves.png" alt="Stemma CAAE">
+    <img class="hero-logo" src="stemma_caae.png" alt="Stemma CAAE">
     <h1 class="hero-title">
       Centro Addestrativo<br>
       <span>Aviazione dell'Esercito</span>
@@ -481,9 +481,9 @@
     </div>
     <div class="activities-grid">
 
-      <div class="activity-card" data-aos="fade-up" data-aos-delay="0">
+      <a href="corsi/piloti.html" class="activity-card" data-aos="fade-up" data-aos-delay="0">
         <span class="activity-icon">🚁</span>
-        <p class="activity-tag">Corso Base & Avanzato</p>
+        <p class="activity-tag">Corso Base &amp; Avanzato</p>
         <h3 class="activity-title">Corsi Piloti</h3>
         <p class="activity-text">Formazione completa per i futuri piloti militari di elicottero, dalla teoria aerodinamica all'abilitazione pratica su diverse piattaforme dell'AVES.</p>
         <ul class="activity-list">
@@ -492,12 +492,12 @@
           <li>Type Rating (AB-206, LUH 196)</li>
           <li>Formazione avanzata crew</li>
         </ul>
-        <a href="corsi/piloti.html" class="activity-link">Approfondisci ›</a>
-      </div>
+        <span class="activity-link">Approfondisci ›</span>
+      </a>
 
-      <div class="activity-card" data-aos="fade-up" data-aos-delay="100">
+      <a href="corsi/specialisti.html" class="activity-card" data-aos="fade-up" data-aos-delay="100">
         <span class="activity-icon">⚙️</span>
-        <p class="activity-tag">Tecnica & Specialistica</p>
+        <p class="activity-tag">Tecnica &amp; Specialistica</p>
         <h3 class="activity-title">Corsi Specialisti</h3>
         <p class="activity-text">Addestramento tecnico per manutentori, meccanici ed elettronici responsabili dell'efficienza operativa della flotta elicotteristica dell'Esercito.</p>
         <ul class="activity-list">
@@ -506,10 +506,10 @@
           <li>Operatori verricello &amp; mitraglieri</li>
           <li>Antincendio aeroportuale</li>
         </ul>
-        <a href="corsi/specialisti.html" class="activity-link">Approfondisci ›</a>
-      </div>
+        <span class="activity-link">Approfondisci ›</span>
+      </a>
 
-      <div class="activity-card" data-aos="fade-up" data-aos-delay="200">
+      <a href="corsi/sere.html" class="activity-card" data-aos="fade-up" data-aos-delay="200">
         <span class="activity-icon">🎖️</span>
         <p class="activity-tag">Survival · Evasion · Resistance · Escape</p>
         <h3 class="activity-title">S.E.R.E.</h3>
@@ -520,10 +520,10 @@
           <li>Resistenza all'interrogatorio</li>
           <li>Procedure CSAR/Personnel Recovery</li>
         </ul>
-        <a href="corsi/sere.html" class="activity-link">Approfondisci ›</a>
-      </div>
+        <span class="activity-link">Approfondisci ›</span>
+      </a>
 
-      <div class="activity-card" data-aos="fade-up" data-aos-delay="300">
+      <a href="corsi/medevac.html" class="activity-card" data-aos="fade-up" data-aos-delay="300">
         <span class="activity-icon">🏥</span>
         <p class="activity-tag">Forward Medical Evacuation</p>
         <h3 class="activity-title">MEDEVAC</h3>
@@ -534,8 +534,8 @@
           <li>Coordinamento con personale sanitario</li>
           <li>Operazioni notturne NVG</li>
         </ul>
-        <a href="corsi/medevac.html" class="activity-link">Approfondisci ›</a>
-      </div>
+        <span class="activity-link">Approfondisci ›</span>
+      </a>
 
     </div>
   </div>
@@ -555,7 +555,7 @@
     </div>
     <div class="fleet-grid">
 
-      <div class="heli-card" data-aos="fade-up" data-aos-delay="0">
+      <a href="flotta/luh196b.html" class="heli-card" data-aos="fade-up" data-aos-delay="0">
         <div class="heli-img-wrap">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/960px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg"
                alt="LUH 196 B" loading="lazy">
@@ -572,15 +572,14 @@
             <div class="spec-chip"><b>NVG</b> compatibile</div>
           </div>
         </div>
-        <a href="flotta/luh196b.html" class="heli-link">Scheda tecnica &amp; galleria →</a>
-      </div>
+        <span class="heli-link">Scheda tecnica &amp; galleria →</span>
+      </a>
 
-      <div class="heli-card" data-aos="fade-up" data-aos-delay="100">
+      <a href="flotta/luh196d.html" class="heli-card" data-aos="fade-up" data-aos-delay="100">
         <div class="heli-img-wrap">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg/960px-MM81993_EI.109_Leonardo_UH-169B_Italian_Army_RAF_Fairford_12.7.23_%2853077211348%29.jpg"
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg/1280px-Italian_Army_Agusta_AB-412_Grifone_Bidini-1.jpg"
                alt="LUH 196 D"
-               loading="lazy"
-               style="filter:hue-rotate(20deg) brightness(1.05) saturate(0.9);">
+               loading="lazy">
           <div class="heli-img-overlay"></div>
           <span class="heli-badge badge-new">NUOVO 2025</span>
         </div>
@@ -594,10 +593,10 @@
             <div class="spec-chip"><b>Glass</b> cockpit</div>
           </div>
         </div>
-        <a href="flotta/luh196d.html" class="heli-link">Scheda tecnica &amp; galleria →</a>
-      </div>
+        <span class="heli-link">Scheda tecnica &amp; galleria →</span>
+      </a>
 
-      <div class="heli-card" data-aos="fade-up" data-aos-delay="200">
+      <a href="flotta/ab205.html" class="heli-card" data-aos="fade-up" data-aos-delay="200">
         <div class="heli-img-wrap">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Italian_Army_Aviation_AB_205_helicopter.png/960px-Italian_Army_Aviation_AB_205_helicopter.png"
                alt="AB-205" loading="lazy">
@@ -614,10 +613,10 @@
             <div class="spec-chip"><b>ONU/NATO</b> missions</div>
           </div>
         </div>
-        <a href="flotta/ab205.html" class="heli-link">Scheda tecnica &amp; galleria →</a>
-      </div>
+        <span class="heli-link">Scheda tecnica &amp; galleria →</span>
+      </a>
 
-      <div class="heli-card" data-aos="fade-up" data-aos-delay="300">
+      <a href="flotta/ab206.html" class="heli-card" data-aos="fade-up" data-aos-delay="300">
         <div class="heli-img-wrap">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg/960px-Agusta-Bell_AB-206A_JetRanger%2C_Italy_-_Army_JP7373821.jpg"
                alt="AB-206 a Viterbo" loading="lazy">
@@ -634,8 +633,8 @@
             <div class="spec-chip"><b>Base</b> Viterbo LIRV</div>
           </div>
         </div>
-        <a href="flotta/ab206.html" class="heli-link">Scheda tecnica &amp; galleria →</a>
-      </div>
+        <span class="heli-link">Scheda tecnica &amp; galleria →</span>
+      </a>
 
     </div>
   </div>
@@ -655,7 +654,7 @@
     </div>
     <div class="bandiera-grid">
       <div class="bandiera-img-wrap" data-aos="fade-right">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/CoA_mil_ITA_centro_aves.png" alt="Stemma CAAE">
+        <img src="stemma_caae.png" alt="Stemma CAAE">
         <p style="margin-top:1.2rem;font-size:.8rem;color:var(--gray);text-align:center;">Stemma del CAAE<br><em>"Volat Agile Rapide Observat"</em></p>
         <div style="margin-top:1.5rem;text-align:center;">
           <a href="bandiera.html" class="btn btn-outline" style="font-size:.85rem;padding:.65rem 1.4rem;">Pagina dedicata →</a>
